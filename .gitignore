@@ -1,6 +1,7 @@
 # Ignore Python bytecode files
 __pycache__/
 *.py[cod]
+.ruff_cache/
 
 # Ignore virtual environment directory (if you have one)
 venv/
