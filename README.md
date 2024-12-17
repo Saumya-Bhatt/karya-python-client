@@ -4,7 +4,8 @@ This here is the Python client to interract with [Karya - the open sourced distr
 
 > Current Stable Version : **0.1.0**
 
-Refer to the [API Docs](https://saumya-bhatt.github.io/karya-python-client)
+- [API Docs](https://saumya-bhatt.github.io/karya-python-client)
+- [How to contribute](./.github/CONTRIBUTING.md)
 
 ---
 
