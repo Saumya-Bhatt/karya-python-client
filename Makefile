@@ -12,9 +12,16 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile
+# Clean the build directory before building
+clean:
+	rm -rf "$(BUILDDIR)"/*
+
+# Ensure clean runs before any build targets
+all: clean
+
+.PHONY: help Makefile clean all
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile
+%: Makefile clean
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
