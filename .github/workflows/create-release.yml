@@ -34,6 +34,13 @@ jobs:
       run: |
         poetry build
 
+    - name: Generate a tag for the release
+      run: |
+        # Extract version from pyproject.toml using python's toml module
+        VERSION=$(python -c "import toml; print(toml.load('pyproject.toml')['tool']['poetry']['version'])")
+        git tag "v$VERSION"
+        git push origin "v$VERSION"
+
     - name: Create GitHub release and upload package
       uses: softprops/action-gh-release@v1
       with:
