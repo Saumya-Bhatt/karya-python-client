@@ -27,7 +27,7 @@ class ExecutorErrorLog(ErrorLogType):
         task_id (str): The ID of the task associated with the error.
     """
 
-    task_id: str  # The ID of the task that encountered the error.
+    task_id: str
 
 
 @dataclass
@@ -42,7 +42,7 @@ class ErrorLog:
         timestamp (int): The timestamp (in Unix format) when the error occurred.
     """
 
-    plan_id: str  # The ID of the plan associated with the error.
-    error: str  # A description of the error.
-    type: ErrorLogType  # The type of the error log (either hook or executor error).
-    timestamp: int  # The timestamp when the error occurred (in Unix format).
+    plan_id: str
+    error: str
+    type: ErrorLogType
+    timestamp: int

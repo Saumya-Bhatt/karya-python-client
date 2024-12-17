@@ -23,24 +23,15 @@ class RestApiRequest(ActionType):
         method (Method): The HTTP method to be used (e.g., GET, POST, etc.). Defaults to GET.
         headers (dict): A dictionary of HTTP headers for the request. Defaults to content-type as application/json.
         timeout (int): The timeout duration for the request, in milliseconds. Defaults to 2000ms.
-        type (str): The type of this action, which is `"karya.core.entities.Action.RestApiRequest"`.
     """
 
-    base_url: str  # The base URL for the API request.
-    body: HttpBodyType = field(
-        default_factory=lambda: EmptyBody()
-    )  # The body of the HTTP request (e.g., JSON payload).
-    protocol: Protocol = (
-        Protocol.HTTP
-    )  # The protocol (HTTP/HTTPS) used for the request.
-    method: Method = (
-        Method.GET
-    )  # The HTTP method used for the request (GET, POST, etc.).
-    headers: dict = field(
-        default_factory=lambda: {"content-type": "application/json"}
-    )  # Default headers for the request.
-    timeout: int = 2000  # Timeout for the request in milliseconds.
-    type: str = "karya.core.entities.Action.RestApiRequest"  # The type identifier for this action.
+    base_url: str
+    body: HttpBodyType = field(default_factory=lambda: EmptyBody())
+    protocol: Protocol = Protocol.HTTP
+    method: Method = Method.GET
+    headers: dict = field(default_factory=lambda: {"content-type": "application/json"})
+    timeout: int = 2000
+    type: str = "karya.core.entities.Action.RestApiRequest"
 
 
 @dataclass
@@ -51,12 +42,11 @@ class SlackMessageRequest(ActionType):
     Attributes:
         channel (str): The Slack channel where the message will be sent.
         message (str): The content of the Slack message.
-        type (str): The type of this action, which is `"karya.core.entities.Action.SlackMessageRequest"`.
     """
 
-    channel: str  # The Slack channel to send the message to.
-    message: str  # The message content.
-    type: str = "karya.core.entities.Action.SlackMessageRequest"  # The type identifier for this action.
+    channel: str
+    message: str
+    type: str = "karya.core.entities.Action.SlackMessageRequest"
 
 
 @dataclass
@@ -68,13 +58,12 @@ class EmailRequest(ActionType):
         recipient (str): The recipient's email address.
         subject (str): The subject of the email.
         message (str): The body content of the email.
-        type (str): The type of this action, which is `"karya.core.entities.Action.EmailRequest"`.
     """
 
-    recipient: str  # The recipient of the email.
-    subject: str  # The subject of the email.
-    message: str  # The content of the email body.
-    type: str = "karya.core.entities.Action.EmailRequest"  # The type identifier for this action.
+    recipient: str
+    subject: str
+    message: str
+    type: str = "karya.core.entities.Action.EmailRequest"
 
 
 @dataclass
@@ -86,15 +75,12 @@ class KafkaProducerRequest(ActionType):
         topic (str): The Kafka topic where the message will be published.
         message (str): The content of the Kafka message.
         key (Optional[str]): The optional key for the Kafka message, used for partitioning.
-        type (str): The type of this action, which is `"karya.core.entities.Action.KafkaProducerRequest"`.
     """
 
-    topic: str  # The Kafka topic where the message will be published.
-    message: str  # The content of the message to send.
-    key: Optional[str] = field(
-        default=None
-    )  # An optional key for the Kafka message, used for partitioning.
-    type: str = "karya.core.entities.Action.KafkaProducerRequest"  # The type identifier for this action.
+    topic: str
+    message: str
+    key: Optional[str] = field(default=None)
+    type: str = "karya.core.entities.Action.KafkaProducerRequest"
 
 
 @dataclass
@@ -104,10 +90,7 @@ class ChainedRequest(ActionType):
 
     Attributes:
         request (SubmitPlanRequest): The request that is part of the chain. This can be another plan submission request.
-        type (str): The type of this action, which is `"karya.core.entities.Action.ChainedRequest"`.
     """
 
-    request: (
-        "SubmitPlanRequest"  # The plan request that is part of the chained actions.
-    )
-    type: str = "karya.core.entities.Action.ChainedRequest"  # The type identifier for this action.
+    request: "SubmitPlanRequest"
+    type: str = "karya.core.entities.Action.ChainedRequest"

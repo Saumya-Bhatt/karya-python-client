@@ -16,9 +16,10 @@ from karya.clients.KaryaRestClient import KaryaRestClient
 
 async def main():
     """
-    Main entry point for the Python client to interact with the Karya API.
+    In this sample, we shall submit a plan with a one-time email request.
 
     This function demonstrates how to:
+
     1. Create a new user using the Karya API.
     2. Submit a one-time plan that sends an email request.
     3. Print the resulting user and plan details to the console.

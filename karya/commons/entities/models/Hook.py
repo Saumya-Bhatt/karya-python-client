@@ -17,8 +17,6 @@ class Hook:
         max_retry (int): The maximum number of retries allowed if the action fails. Defaults to 3.
     """
 
-    trigger: Trigger  # The condition under which the hook will be triggered (e.g., ON_FAILURE).
-    action: ActionType  # The action to be executed when the hook is triggered (e.g., sending an API request).
-    max_retry: int = (
-        3  # The maximum number of retries in case of failure. Defaults to 3.
-    )
+    trigger: Trigger
+    action: ActionType
+    max_retry: int = 3

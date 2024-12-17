@@ -16,7 +16,8 @@ from karya.clients.KaryaRestClient import KaryaRestClient
 
 async def main():
     """
-    Main function to demonstrate how to interact with the Karya API by:
+    In this sample, we shall submit a plan with a recurring Kafka message action.
+
     1. Creating a user through the Karya API.
     2. Creating a recurring plan to send a Kafka message.
     3. Submitting the plan and printing the plan details.

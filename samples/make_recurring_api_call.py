@@ -18,9 +18,10 @@ from karya.commons.entities.enums import Protocol, Method
 
 async def main():
     """
-    Main entry point for the Python client to interact with the Karya API.
+    In this sample, we shall submit a plan with a REST API request action to make a recurring API call.
 
     This function demonstrates how to:
+
     1. Create a new user using the Karya API.
     2. Submit a recurring plan that makes a REST API call.
     3. Print the resulting user and plan details to the console.

@@ -16,9 +16,10 @@ from karya.clients.KaryaRestClient import KaryaRestClient
 
 async def main():
     """
-    Main entry point for the Python client to interact with the Karya API.
+    In this sample, we shall submit a plan with a chained action to make a recurring API call.
 
     This function demonstrates how to:
+
     1. Create a new user using the Karya API.
     2. Submit a recurring plan with a chained API request.
     3. Submit a one-time plan that includes a chained API action.

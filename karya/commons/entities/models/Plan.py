@@ -15,13 +15,10 @@ class Recurring(PlanType):
 
     Attributes:
         end_at (Optional[str]): The end date/time for the recurring plan in ISO 8601 format. If `None`, the plan continues indefinitely.
-        type (str): The type of the plan, default value is "karya.core.entities.PlanType.Recurring".
     """
 
-    end_at: Optional[
-        str
-    ]  # The end time for the recurring plan, or None for an indefinite recurring plan.
-    type: str = "karya.core.entities.PlanType.Recurring"  # The type identifier for a recurring plan.
+    end_at: Optional[str]
+    type: str = "karya.core.entities.PlanType.Recurring"
 
 
 @dataclass
@@ -30,12 +27,9 @@ class OneTime(PlanType):
     Represents a one-time plan type.
 
     This class is used for plans that execute only once and do not repeat. Once the plan completes, it will not execute again.
-
-    Attributes:
-        type (str): The type of the plan, default value is "karya.core.entities.PlanType.OneTime".
     """
 
-    type: str = "karya.core.entities.PlanType.OneTime"  # The type identifier for a one-time plan.
+    type: str = "karya.core.entities.PlanType.OneTime"
 
 
 @dataclass
@@ -61,21 +55,15 @@ class Plan:
         updated_at (int): The timestamp when the plan was last updated.
     """
 
-    id: str  # Unique identifier for the plan.
-    user_id: str  # The user who created the plan.
-    description: str  # A short description of the plan.
-    period_time: (
-        str  # The period or frequency of the plan's execution in ISO 8601 format.
-    )
-    type: PlanType  # The type of the plan (either recurring or one-time).
-    status: PlanStatus  # The current status of the plan (e.g., created, running, completed, cancelled).
-    max_failure_retry: int  # The maximum number of retries allowed if the plan fails.
-    action: ActionType  # The action that the plan will execute (e.g., REST API call, Slack message).
-    hook: List[
-        Hook
-    ]  # List of hooks that trigger actions based on events (e.g., on failure, on completion).
-    parent_plan_id: Optional[
-        str
-    ]  # The ID of the parent plan if this plan is part of a larger plan.
-    created_at: int  # The timestamp indicating when the plan was created.
-    updated_at: int  # The timestamp indicating when the plan was last updated.
+    id: str
+    user_id: str
+    description: str
+    period_time: str
+    type: PlanType
+    status: PlanStatus
+    max_failure_retry: int
+    action: ActionType
+    hook: List[Hook]
+    parent_plan_id: Optional[str]
+    created_at: int
+    updated_at: int

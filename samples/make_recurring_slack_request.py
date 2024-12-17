@@ -16,7 +16,8 @@ from karya.clients.KaryaRestClient import KaryaRestClient
 
 async def main():
     """
-    Main function to interact with the Karya API by:
+    In this sample, we shall submit a plan with a recurring Slack message action.
+
     1. Creating a user.
     2. Creating a recurring plan that sends a Slack message every 7 seconds.
     3. Submitting the plan to the API and printing the plan details.

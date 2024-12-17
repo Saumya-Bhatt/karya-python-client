@@ -15,11 +15,10 @@ class JsonBody(HttpBodyType):
 
     Attributes:
         json_string (str): The JSON string representing the body of the HTTP request.
-        type (str): The type of this body, default is "karya.core.entities.http.Body.JsonBody".
     """
 
-    json_string: str  # The JSON string to be included as the HTTP request body.
-    type: str = "karya.core.entities.http.Body.JsonBody"  # The type of the HTTP body, default value for JSON body.
+    json_string: str
+    type: str = "karya.core.entities.http.Body.JsonBody"
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "JsonBody":
@@ -32,7 +31,7 @@ class JsonBody(HttpBodyType):
         Returns:
             JsonBody: An instance of JsonBody with the serialized JSON string.
         """
-        # Convert the dictionary to a JSON string and return an instance of JsonBody.
+
         return cls(json_string=json.dumps(data))
 
 
@@ -43,9 +42,6 @@ class EmptyBody(HttpBodyType):
 
     This class is used to represent a request body that does not contain any data. It can be used in situations
     where the HTTP request does not need to include any body content, such as a DELETE or GET request.
-
-    Attributes:
-        type (str): The type of this body, default is "karya.core.entities.http.Body.EmptyBody".
     """
 
-    type: str = "karya.core.entities.http.Body.EmptyBody"  # The type of the empty body.
+    type: str = "karya.core.entities.http.Body.EmptyBody"

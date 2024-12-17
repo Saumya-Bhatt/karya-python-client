@@ -15,8 +15,6 @@ class User:
         created_at (int): The timestamp indicating when the user was created (Unix timestamp).
     """
 
-    id: str  # Unique identifier for the user, typically generated when the user is created.
-    name: str  # The name of the user.
-    created_at: (
-        int  # The timestamp when the user was created (in Unix timestamp format).
-    )
+    id: str
+    name: str
+    created_at: int

@@ -6,10 +6,16 @@
 Welcome to the Karya API Documentation!
 =======================================
 
+Karya is an open source distributed job scheduler platform written in Kotlin.
+A user can submit a plan to Karya, defining how they want to run a job, and Karya will execute the job according to the plan.
+This here is the documentation for the Karya API client, a Python library for interacting with the Karya service.
+
+To read up more about Karya, visit the Karya GitHub page - https://github.com/Saumya-Bhatt/karya
+
 Overview
 ========
 
-This is the documentation for the Karya API client, a Python library for interacting with the Karya service.
+This doc will help you get started with the Karya API client. It has a few usage examples to help you understand how to use the client and start scheduling jobs!
 
 .. toctree::
    :maxdepth: 2

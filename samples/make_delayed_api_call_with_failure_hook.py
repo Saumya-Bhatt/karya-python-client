@@ -17,9 +17,10 @@ from karya.clients.KaryaRestClient import KaryaRestClient
 
 async def main():
     """
-    Main entry point for the Python client to interact with the Karya API.
+    In this sample, we shall submit a plan with a failure hook to make a one-time API call
 
     This function demonstrates how to use the Karya API client to:
+
     1. Create a new user.
     2. Submit a plan with a failure hook.
     3. Retrieve a plan's summary.

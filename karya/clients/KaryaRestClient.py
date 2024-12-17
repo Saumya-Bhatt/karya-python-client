@@ -22,13 +22,6 @@ class KaryaRestClient(Client):
     This client provides methods to manage users and plans, such as creating a user,
     submitting a plan, fetching plans, updating plans, and getting summaries of plans.
 
-    Attributes:
-        api_version (str): The version of the API to be used.
-        plans_endpoint (str): The endpoint for working with plans.
-        users_endpoint (str): The endpoint for working with users.
-        base_url (str): The base URL of the Karya API.
-        client (httpx.AsyncClient): The HTTP client used to make asynchronous requests.
-
     Methods:
         create_user(request: CreateUserRequest) -> User:
             Creates a new user.

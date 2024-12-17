@@ -38,10 +38,8 @@ class SubmitPlanRequest:
     period_time: str
     plan_type: PlanType
     action: ActionType
-    hooks: List[Hook] = field(
-        default_factory=list
-    )  # Default is an empty list if no hooks are provided
-    max_failure_retry: int = 3  # Default is 3 retries
+    hooks: List[Hook] = field(default_factory=list)
+    max_failure_retry: int = 3
 
 
 @dataclass
@@ -57,6 +55,6 @@ class UpdatePlanRequest:
     """
 
     planId: str
-    periodTime: Optional[str]  # Optional field, can be None if no update is needed
-    maxFailureRetry: Optional[int]  # Optional field, can be None if no update is needed
-    hooks: Optional[List[Hook]]  # Optional field, can be None if no update is needed
+    periodTime: Optional[str]
+    maxFailureRetry: Optional[int]
+    hooks: Optional[List[Hook]]
