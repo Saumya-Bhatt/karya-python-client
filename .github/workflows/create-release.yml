@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-      - packages_setup
-    # tags:
-    #   - 'v*'  # Trigger on tags that start with 'v', e.g., v0.1.0
 
 jobs:
 
