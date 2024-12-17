@@ -11,7 +11,11 @@ This here is the Python client to interract with [Karya - the open sourced distr
 
 ## Getting Started
 
-A stable version of the client will be published to PyPi soon.
+This section highlights the steps to get started with the Karya Python client.
+
+### Installation
+
+The distribution files can be found on the latest releases on [Github](https://github.com/Saumya-Bhatt/karya-python-client/releases) 
 
 ### Useage Examples
 

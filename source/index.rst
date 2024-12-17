@@ -12,7 +12,7 @@ This here is the documentation for the Karya API client, a Python library for in
 
 To read up more about Karya, visit the `Karya GitHub page  <https://github.com/Saumya-Bhatt/karya>`_
 
-**Latest Client Version:** ``0.1.0``
+Download the Karya client from the `Github Releases page <https://github.com/Saumya-Bhatt/karya-python-client/releases>`_
 
 Overview
 ========

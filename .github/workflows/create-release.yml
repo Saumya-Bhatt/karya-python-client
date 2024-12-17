@@ -1,0 +1,47 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  publish-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
+
+    - name: Install project dependencies
+      run: |
+        poetry install --no-root
+
+    - name: Build the package
+      run: |
+        poetry build
+
+    - name: Generate release tag
+      id: tag
+      run: |
+        echo "::set-output name=release_tag::karya-client_$(date +"%Y.%m.%d_%H-%M")"
+
+    - name: Create GitHub release and upload package
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        files: |
+          dist/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
