@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     name: Build and Deploy Documentation
@@ -12,21 +15,24 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
 
-    - name: Install dependencies
+    - name: Install Poetry
       run: |
-        python -m pip install --upgrade pip
-        pip install sphinx
-        pip install sphinx_rtd_theme
+        pip install poetry
+
+    - name: Install project dependencies
+      run: |
+        poetry install
 
     - name: Build the documentation
-      run:  make html
+      run: |
+        poetry run sphinx-build source build/html
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
