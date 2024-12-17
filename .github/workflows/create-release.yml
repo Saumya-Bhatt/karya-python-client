@@ -1,10 +1,9 @@
-name: Create Release
+name: Create Github Release
 
 on:
   push:
     branches:
       - main
-      - tag_update
 
 jobs:
 

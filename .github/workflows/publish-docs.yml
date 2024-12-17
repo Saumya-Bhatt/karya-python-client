@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'karya/**'
+      - 'samples/**'
+      - 'source/**'
 
 permissions:
   contents: write
