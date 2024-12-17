@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>karya.commons.entities.enums &mdash; Karya 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Karya
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Karya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">karya.commons.entities.enums</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for karya.commons.entities.enums</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+
+<span class="c1"># Enum class to represent different triggers for actions in a workflow.</span>
+<div class="viewcode-block" id="Trigger">
+<a class="viewcode-back" href="../../../../index.html#karya.commons.entities.enums.Trigger">[docs]</a>
+<span class="k">class</span> <span class="nc">Trigger</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum that defines the possible triggers for an action to occur within a plan or workflow.</span>
+
+<span class="sd">    - `ON_FAILURE`: The action is triggered when the plan fails.</span>
+<span class="sd">    - `ON_COMPLETION`: The action is triggered when the plan successfully completes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ON_FAILURE</span> <span class="o">=</span> <span class="s2">&quot;ON_FAILURE&quot;</span>
+    <span class="n">ON_COMPLETION</span> <span class="o">=</span> <span class="s2">&quot;ON_COMPLETION&quot;</span></div>
+
+
+
+<span class="c1"># Enum class to represent different protocols used for HTTP communication.</span>
+<div class="viewcode-block" id="Protocol">
+<a class="viewcode-back" href="../../../../index.html#karya.commons.entities.enums.Protocol">[docs]</a>
+<span class="k">class</span> <span class="nc">Protocol</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum that defines the possible protocols for HTTP communication.</span>
+
+<span class="sd">    - `HTTP`: The standard HTTP protocol.</span>
+<span class="sd">    - `HTTPS`: The secure version of HTTP, encrypted using SSL/TLS.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">HTTP</span> <span class="o">=</span> <span class="s2">&quot;HTTP&quot;</span>
+    <span class="n">HTTPS</span> <span class="o">=</span> <span class="s2">&quot;HTTPS&quot;</span></div>
+
+
+
+<span class="c1"># Enum class to represent HTTP request methods.</span>
+<div class="viewcode-block" id="Method">
+<a class="viewcode-back" href="../../../../index.html#karya.commons.entities.enums.Method">[docs]</a>
+<span class="k">class</span> <span class="nc">Method</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum that defines the HTTP methods used for making requests.</span>
+
+<span class="sd">    - `GET`: Retrieve data from the server.</span>
+<span class="sd">    - `POST`: Send data to the server.</span>
+<span class="sd">    - `PATCH`: Partially update data on the server.</span>
+<span class="sd">    - `DELETE`: Remove data from the server.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">GET</span> <span class="o">=</span> <span class="s2">&quot;GET&quot;</span>
+    <span class="n">POST</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+    <span class="n">PATCH</span> <span class="o">=</span> <span class="s2">&quot;PATCH&quot;</span>
+    <span class="n">DELETE</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span></div>
+
+
+
+<span class="c1"># Enum class to represent the different statuses of a plan.</span>
+<div class="viewcode-block" id="PlanStatus">
+<a class="viewcode-back" href="../../../../index.html#karya.commons.entities.enums.PlanStatus">[docs]</a>
+<span class="k">class</span> <span class="nc">PlanStatus</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum that defines the possible states a plan can be in during its lifecycle.</span>
+
+<span class="sd">    - `CREATED`: The plan has been created but not yet started.</span>
+<span class="sd">    - `RUNNING`: The plan is currently in execution.</span>
+<span class="sd">    - `COMPLETED`: The plan has finished execution.</span>
+<span class="sd">    - `CANCELLED`: The plan was cancelled before completion.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CREATED</span> <span class="o">=</span> <span class="s2">&quot;CREATED&quot;</span>
+    <span class="n">RUNNING</span> <span class="o">=</span> <span class="s2">&quot;RUNNING&quot;</span>
+    <span class="n">COMPLETED</span> <span class="o">=</span> <span class="s2">&quot;COMPLETED&quot;</span>
+    <span class="n">CANCELLED</span> <span class="o">=</span> <span class="s2">&quot;CANCELLED&quot;</span></div>
+
+
+
+<span class="c1"># Enum class to represent the different statuses of a task within a plan.</span>
+<div class="viewcode-block" id="TaskStatus">
+<a class="viewcode-back" href="../../../../index.html#karya.commons.entities.enums.TaskStatus">[docs]</a>
+<span class="k">class</span> <span class="nc">TaskStatus</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum that defines the possible states of a task during its execution within a plan.</span>
+
+<span class="sd">    - `CREATED`: The task has been created but not yet processed.</span>
+<span class="sd">    - `PROCESSING`: The task is currently being processed.</span>
+<span class="sd">    - `SUCCESS`: The task was processed successfully.</span>
+<span class="sd">    - `FAILURE`: The task encountered an error and failed.</span>
+<span class="sd">    - `CANCELLED`: The task was cancelled before completion.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CREATED</span> <span class="o">=</span> <span class="s2">&quot;CREATED&quot;</span>
+    <span class="n">PROCESSING</span> <span class="o">=</span> <span class="s2">&quot;PROCESSING&quot;</span>
+    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="s2">&quot;SUCCESS&quot;</span>
+    <span class="n">FAILURE</span> <span class="o">=</span> <span class="s2">&quot;FAILURE&quot;</span>
+    <span class="n">CANCELLED</span> <span class="o">=</span> <span class="s2">&quot;CANCELLED&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Saumya Bhatt.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

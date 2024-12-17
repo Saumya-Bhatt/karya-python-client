@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>karya.commons.entities.models.Plan &mdash; Karya 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            Karya
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Karya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">karya.commons.entities.models.Plan</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for karya.commons.entities.models.Plan</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">karya.commons.entities.base</span> <span class="kn">import</span> <span class="n">PlanType</span><span class="p">,</span> <span class="n">ActionType</span>
+<span class="kn">from</span> <span class="nn">karya.commons.entities.enums</span> <span class="kn">import</span> <span class="n">PlanStatus</span>
+<span class="kn">from</span> <span class="nn">karya.commons.entities.models.Hook</span> <span class="kn">import</span> <span class="n">Hook</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+
+<div class="viewcode-block" id="Recurring">
+<a class="viewcode-back" href="../../../../../index.html#karya.commons.entities.models.Plan.Recurring">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Recurring</span><span class="p">(</span><span class="n">PlanType</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a recurring plan type.</span>
+
+<span class="sd">    This class is used for plans that repeat at regular intervals. It includes an optional `end_at` field that</span>
+<span class="sd">    specifies when the plan will stop recurring. If `end_at` is `None`, the plan will continue indefinitely.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        end_at (Optional[str]): The end date/time for the recurring plan in ISO 8601 format. If `None`, the plan continues indefinitely.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">end_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.PlanType.Recurring&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="OneTime">
+<a class="viewcode-back" href="../../../../../index.html#karya.commons.entities.models.Plan.OneTime">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">OneTime</span><span class="p">(</span><span class="n">PlanType</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a one-time plan type.</span>
+
+<span class="sd">    This class is used for plans that execute only once and do not repeat. Once the plan completes, it will not execute again.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.PlanType.OneTime&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="Plan">
+<a class="viewcode-back" href="../../../../../index.html#karya.commons.entities.models.Plan.Plan">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Plan</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a plan that a user can create and execute.</span>
+
+<span class="sd">    A plan is a set of instructions or actions to be executed at a specified interval or on a one-time basis.</span>
+<span class="sd">    It includes metadata such as plan description, status, failure retries, associated actions, and hooks for additional logic.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (str): The unique identifier of the plan.</span>
+<span class="sd">        user_id (str): The ID of the user who created the plan.</span>
+<span class="sd">        description (str): A brief description of the plan.</span>
+<span class="sd">        period_time (str): The time interval between executions (ISO 8601 format).</span>
+<span class="sd">        type (PlanType): The type of plan, either recurring or one-time.</span>
+<span class="sd">        status (PlanStatus): The current status of the plan (e.g., created, running, completed, cancelled).</span>
+<span class="sd">        max_failure_retry (int): The maximum number of retries allowed if the plan fails.</span>
+<span class="sd">        action (ActionType): The action to be performed as part of the plan.</span>
+<span class="sd">        hook (List[Hook]): A list of hooks that can trigger additional actions based on plan events (e.g., on failure).</span>
+<span class="sd">        parent_plan_id (Optional[str]): The ID of the parent plan, if this plan is a child or sub-plan.</span>
+<span class="sd">        created_at (int): The timestamp when the plan was created.</span>
+<span class="sd">        updated_at (int): The timestamp when the plan was last updated.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">period_time</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">PlanType</span>
+    <span class="n">status</span><span class="p">:</span> <span class="n">PlanStatus</span>
+    <span class="n">max_failure_retry</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">action</span><span class="p">:</span> <span class="n">ActionType</span>
+    <span class="n">hook</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Hook</span><span class="p">]</span>
+    <span class="n">parent_plan_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">created_at</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">updated_at</span><span class="p">:</span> <span class="nb">int</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Saumya Bhatt.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
