@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - tag_update
 
 jobs:
 
@@ -35,7 +36,7 @@ jobs:
     - name: Generate release tag
       id: tag
       run: |
-        echo "::set-output name=release_tag::karya-client_$(date +"%Y.%m.%d_%H-%M")"
+        echo "::set-output name=release_tag::v$(date +%s)"
 
     - name: Create GitHub release and upload package
       uses: softprops/action-gh-release@v1
