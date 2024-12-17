@@ -44,12 +44,34 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">Welcome to the Karya API Documentation!</a></li>
 <li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#usage-examples">Usage Examples</a></li>
-<li><a class="reference internal" href="#module-karya.commons.client">API Documentation</a><ul>
+<li><a class="reference internal" href="#usage-examples">Usage Examples</a><ul>
+<li><a class="reference internal" href="#samples.make_delayed_api_call_with_failure_hook.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#samples.make_delayed_chained_karya_call.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#samples.make_delayed_email_request.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#samples.make_recurring_api_call.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#samples.make_recurring_push_to_kafka.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#samples.make_recurring_slack_request.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-karya.clients.KaryaRestClient">API Documentation</a><ul>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient</span></code></a><ul>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.close"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.close()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.api_version"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.api_version</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.cancel_plan"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.cancel_plan()</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.close()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.create_user"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.create_user()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.get_plan"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.get_plan()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.get_summary"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.get_summary()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.plans_endpoint"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.plans_endpoint</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.submit_plan"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.submit_plan()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.update_plan"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.update_plan()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.KaryaRestClient.users_endpoint"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.users_endpoint</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#karya.commons.client.Client"><code class="docutils literal notranslate"><span class="pre">Client</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.client.Client.close"><code class="docutils literal notranslate"><span class="pre">Client.close()</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.client.Client.cancel_plan"><code class="docutils literal notranslate"><span class="pre">Client.cancel_plan()</span></code></a></li>
-<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Client.close()</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Client.close()</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.client.Client.create_user"><code class="docutils literal notranslate"><span class="pre">Client.create_user()</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.client.Client.get_plan"><code class="docutils literal notranslate"><span class="pre">Client.get_plan()</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.client.Client.get_summary"><code class="docutils literal notranslate"><span class="pre">Client.get_summary()</span></code></a></li>
@@ -63,11 +85,11 @@
 <li><a class="reference internal" href="#karya.commons.config.ClientConfig.port"><code class="docutils literal notranslate"><span class="pre">ClientConfig.port</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.config.ClientConfig.get_base_url"><code class="docutils literal notranslate"><span class="pre">ClientConfig.get_base_url()</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.config.ClientConfig.dev"><code class="docutils literal notranslate"><span class="pre">ClientConfig.dev()</span></code></a></li>
-<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">ClientConfig.dev()</span></code></a></li>
-<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">ClientConfig.get_base_url()</span></code></a></li>
-<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">ClientConfig.host</span></code></a></li>
-<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">ClientConfig.port</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">ClientConfig.protocol</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">ClientConfig.dev()</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">ClientConfig.get_base_url()</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">ClientConfig.host</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">ClientConfig.port</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">ClientConfig.protocol</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.base.ActionType"><code class="docutils literal notranslate"><span class="pre">ActionType</span></code></a></li>
@@ -108,7 +130,7 @@
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.requests.CreateUserRequest"><code class="docutils literal notranslate"><span class="pre">CreateUserRequest</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.requests.CreateUserRequest.name"><code class="docutils literal notranslate"><span class="pre">CreateUserRequest.name</span></code></a></li>
-<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">CreateUserRequest.name</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">CreateUserRequest.name</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.requests.SubmitPlanRequest"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest</span></code></a><ul>
@@ -119,13 +141,13 @@
 <li><a class="reference internal" href="#karya.commons.entities.requests.SubmitPlanRequest.action"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.action</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.requests.SubmitPlanRequest.hooks"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.hooks</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.requests.SubmitPlanRequest.max_failure_retry"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.max_failure_retry</span></code></a></li>
-<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.action</span></code></a></li>
-<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.description</span></code></a></li>
-<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.hooks</span></code></a></li>
-<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.max_failure_retry</span></code></a></li>
-<li><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.period_time</span></code></a></li>
-<li><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.plan_type</span></code></a></li>
-<li><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.user_id</span></code></a></li>
+<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.action</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.description</span></code></a></li>
+<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.hooks</span></code></a></li>
+<li><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.max_failure_retry</span></code></a></li>
+<li><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.period_time</span></code></a></li>
+<li><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.plan_type</span></code></a></li>
+<li><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">SubmitPlanRequest.user_id</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.requests.UpdatePlanRequest"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest</span></code></a><ul>
@@ -133,31 +155,31 @@
 <li><a class="reference internal" href="#karya.commons.entities.requests.UpdatePlanRequest.periodTime"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.periodTime</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.requests.UpdatePlanRequest.maxFailureRetry"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.maxFailureRetry</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.requests.UpdatePlanRequest.hooks"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.hooks</span></code></a></li>
-<li><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.hooks</span></code></a></li>
-<li><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.maxFailureRetry</span></code></a></li>
-<li><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.periodTime</span></code></a></li>
-<li><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.planId</span></code></a></li>
+<li><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.hooks</span></code></a></li>
+<li><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.maxFailureRetry</span></code></a></li>
+<li><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.periodTime</span></code></a></li>
+<li><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.planId</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.response.GetPlanResponse"><code class="docutils literal notranslate"><span class="pre">GetPlanResponse</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.response.GetPlanResponse.plan"><code class="docutils literal notranslate"><span class="pre">GetPlanResponse.plan</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.response.GetPlanResponse.latest_task"><code class="docutils literal notranslate"><span class="pre">GetPlanResponse.latest_task</span></code></a></li>
-<li><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">GetPlanResponse.latest_task</span></code></a></li>
-<li><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">GetPlanResponse.plan</span></code></a></li>
+<li><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">GetPlanResponse.latest_task</span></code></a></li>
+<li><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">GetPlanResponse.plan</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.response.GetSummaryResponse"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.response.GetSummaryResponse.plan"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.plan</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.response.GetSummaryResponse.tasks"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.tasks</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.response.GetSummaryResponse.error_logs"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.error_logs</span></code></a></li>
-<li><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.error_logs</span></code></a></li>
-<li><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.plan</span></code></a></li>
-<li><a class="reference internal" href="#id22"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.tasks</span></code></a></li>
+<li><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.error_logs</span></code></a></li>
+<li><a class="reference internal" href="#id22"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.plan</span></code></a></li>
+<li><a class="reference internal" href="#id23"><code class="docutils literal notranslate"><span class="pre">GetSummaryResponse.tasks</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.ChainedRequest"><code class="docutils literal notranslate"><span class="pre">ChainedRequest</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.ChainedRequest.request"><code class="docutils literal notranslate"><span class="pre">ChainedRequest.request</span></code></a></li>
-<li><a class="reference internal" href="#id23"><code class="docutils literal notranslate"><span class="pre">ChainedRequest.request</span></code></a></li>
+<li><a class="reference internal" href="#id24"><code class="docutils literal notranslate"><span class="pre">ChainedRequest.request</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.ChainedRequest.type"><code class="docutils literal notranslate"><span class="pre">ChainedRequest.type</span></code></a></li>
 </ul>
 </li>
@@ -165,9 +187,9 @@
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.EmailRequest.recipient"><code class="docutils literal notranslate"><span class="pre">EmailRequest.recipient</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.EmailRequest.subject"><code class="docutils literal notranslate"><span class="pre">EmailRequest.subject</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.EmailRequest.message"><code class="docutils literal notranslate"><span class="pre">EmailRequest.message</span></code></a></li>
-<li><a class="reference internal" href="#id24"><code class="docutils literal notranslate"><span class="pre">EmailRequest.message</span></code></a></li>
-<li><a class="reference internal" href="#id25"><code class="docutils literal notranslate"><span class="pre">EmailRequest.recipient</span></code></a></li>
-<li><a class="reference internal" href="#id26"><code class="docutils literal notranslate"><span class="pre">EmailRequest.subject</span></code></a></li>
+<li><a class="reference internal" href="#id25"><code class="docutils literal notranslate"><span class="pre">EmailRequest.message</span></code></a></li>
+<li><a class="reference internal" href="#id26"><code class="docutils literal notranslate"><span class="pre">EmailRequest.recipient</span></code></a></li>
+<li><a class="reference internal" href="#id27"><code class="docutils literal notranslate"><span class="pre">EmailRequest.subject</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.EmailRequest.type"><code class="docutils literal notranslate"><span class="pre">EmailRequest.type</span></code></a></li>
 </ul>
 </li>
@@ -175,9 +197,9 @@
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.KafkaProducerRequest.topic"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.topic</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.KafkaProducerRequest.message"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.message</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.KafkaProducerRequest.key"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.key</span></code></a></li>
-<li><a class="reference internal" href="#id27"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.key</span></code></a></li>
-<li><a class="reference internal" href="#id28"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.message</span></code></a></li>
-<li><a class="reference internal" href="#id29"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.topic</span></code></a></li>
+<li><a class="reference internal" href="#id28"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.key</span></code></a></li>
+<li><a class="reference internal" href="#id29"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.message</span></code></a></li>
+<li><a class="reference internal" href="#id30"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.topic</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.KafkaProducerRequest.type"><code class="docutils literal notranslate"><span class="pre">KafkaProducerRequest.type</span></code></a></li>
 </ul>
 </li>
@@ -188,20 +210,20 @@
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.RestApiRequest.method"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.method</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.RestApiRequest.headers"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.headers</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.RestApiRequest.timeout"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.timeout</span></code></a></li>
-<li><a class="reference internal" href="#id30"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.base_url</span></code></a></li>
-<li><a class="reference internal" href="#id31"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.body</span></code></a></li>
-<li><a class="reference internal" href="#id32"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.headers</span></code></a></li>
-<li><a class="reference internal" href="#id33"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.method</span></code></a></li>
-<li><a class="reference internal" href="#id34"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.protocol</span></code></a></li>
-<li><a class="reference internal" href="#id35"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.timeout</span></code></a></li>
+<li><a class="reference internal" href="#id31"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.base_url</span></code></a></li>
+<li><a class="reference internal" href="#id32"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.body</span></code></a></li>
+<li><a class="reference internal" href="#id33"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.headers</span></code></a></li>
+<li><a class="reference internal" href="#id34"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.method</span></code></a></li>
+<li><a class="reference internal" href="#id35"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.protocol</span></code></a></li>
+<li><a class="reference internal" href="#id36"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.timeout</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.RestApiRequest.type"><code class="docutils literal notranslate"><span class="pre">RestApiRequest.type</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.SlackMessageRequest"><code class="docutils literal notranslate"><span class="pre">SlackMessageRequest</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.SlackMessageRequest.channel"><code class="docutils literal notranslate"><span class="pre">SlackMessageRequest.channel</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.SlackMessageRequest.message"><code class="docutils literal notranslate"><span class="pre">SlackMessageRequest.message</span></code></a></li>
-<li><a class="reference internal" href="#id36"><code class="docutils literal notranslate"><span class="pre">SlackMessageRequest.channel</span></code></a></li>
-<li><a class="reference internal" href="#id37"><code class="docutils literal notranslate"><span class="pre">SlackMessageRequest.message</span></code></a></li>
+<li><a class="reference internal" href="#id37"><code class="docutils literal notranslate"><span class="pre">SlackMessageRequest.channel</span></code></a></li>
+<li><a class="reference internal" href="#id38"><code class="docutils literal notranslate"><span class="pre">SlackMessageRequest.message</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Action.SlackMessageRequest.type"><code class="docutils literal notranslate"><span class="pre">SlackMessageRequest.type</span></code></a></li>
 </ul>
 </li>
@@ -210,15 +232,15 @@
 <li><a class="reference internal" href="#karya.commons.entities.models.ErrorLog.ErrorLog.error"><code class="docutils literal notranslate"><span class="pre">ErrorLog.error</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.ErrorLog.ErrorLog.type"><code class="docutils literal notranslate"><span class="pre">ErrorLog.type</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.ErrorLog.ErrorLog.timestamp"><code class="docutils literal notranslate"><span class="pre">ErrorLog.timestamp</span></code></a></li>
-<li><a class="reference internal" href="#id38"><code class="docutils literal notranslate"><span class="pre">ErrorLog.error</span></code></a></li>
-<li><a class="reference internal" href="#id39"><code class="docutils literal notranslate"><span class="pre">ErrorLog.plan_id</span></code></a></li>
-<li><a class="reference internal" href="#id40"><code class="docutils literal notranslate"><span class="pre">ErrorLog.timestamp</span></code></a></li>
-<li><a class="reference internal" href="#id41"><code class="docutils literal notranslate"><span class="pre">ErrorLog.type</span></code></a></li>
+<li><a class="reference internal" href="#id39"><code class="docutils literal notranslate"><span class="pre">ErrorLog.error</span></code></a></li>
+<li><a class="reference internal" href="#id40"><code class="docutils literal notranslate"><span class="pre">ErrorLog.plan_id</span></code></a></li>
+<li><a class="reference internal" href="#id41"><code class="docutils literal notranslate"><span class="pre">ErrorLog.timestamp</span></code></a></li>
+<li><a class="reference internal" href="#id42"><code class="docutils literal notranslate"><span class="pre">ErrorLog.type</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.models.ErrorLog.ExecutorErrorLog"><code class="docutils literal notranslate"><span class="pre">ExecutorErrorLog</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.models.ErrorLog.ExecutorErrorLog.task_id"><code class="docutils literal notranslate"><span class="pre">ExecutorErrorLog.task_id</span></code></a></li>
-<li><a class="reference internal" href="#id42"><code class="docutils literal notranslate"><span class="pre">ExecutorErrorLog.task_id</span></code></a></li>
+<li><a class="reference internal" href="#id43"><code class="docutils literal notranslate"><span class="pre">ExecutorErrorLog.task_id</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.models.ErrorLog.HookErrorLog"><code class="docutils literal notranslate"><span class="pre">HookErrorLog</span></code></a></li>
@@ -226,9 +248,9 @@
 <li><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook.trigger"><code class="docutils literal notranslate"><span class="pre">Hook.trigger</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook.action"><code class="docutils literal notranslate"><span class="pre">Hook.action</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook.max_retry"><code class="docutils literal notranslate"><span class="pre">Hook.max_retry</span></code></a></li>
-<li><a class="reference internal" href="#id43"><code class="docutils literal notranslate"><span class="pre">Hook.action</span></code></a></li>
-<li><a class="reference internal" href="#id44"><code class="docutils literal notranslate"><span class="pre">Hook.max_retry</span></code></a></li>
-<li><a class="reference internal" href="#id45"><code class="docutils literal notranslate"><span class="pre">Hook.trigger</span></code></a></li>
+<li><a class="reference internal" href="#id44"><code class="docutils literal notranslate"><span class="pre">Hook.action</span></code></a></li>
+<li><a class="reference internal" href="#id45"><code class="docutils literal notranslate"><span class="pre">Hook.max_retry</span></code></a></li>
+<li><a class="reference internal" href="#id46"><code class="docutils literal notranslate"><span class="pre">Hook.trigger</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.models.HttpBody.EmptyBody"><code class="docutils literal notranslate"><span class="pre">EmptyBody</span></code></a><ul>
@@ -238,7 +260,7 @@
 <li><a class="reference internal" href="#karya.commons.entities.models.HttpBody.JsonBody"><code class="docutils literal notranslate"><span class="pre">JsonBody</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.models.HttpBody.JsonBody.json_string"><code class="docutils literal notranslate"><span class="pre">JsonBody.json_string</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.HttpBody.JsonBody.from_dict"><code class="docutils literal notranslate"><span class="pre">JsonBody.from_dict()</span></code></a></li>
-<li><a class="reference internal" href="#id46"><code class="docutils literal notranslate"><span class="pre">JsonBody.json_string</span></code></a></li>
+<li><a class="reference internal" href="#id47"><code class="docutils literal notranslate"><span class="pre">JsonBody.json_string</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.HttpBody.JsonBody.type"><code class="docutils literal notranslate"><span class="pre">JsonBody.type</span></code></a></li>
 </ul>
 </li>
@@ -259,23 +281,23 @@
 <li><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan.parent_plan_id"><code class="docutils literal notranslate"><span class="pre">Plan.parent_plan_id</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan.created_at"><code class="docutils literal notranslate"><span class="pre">Plan.created_at</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan.updated_at"><code class="docutils literal notranslate"><span class="pre">Plan.updated_at</span></code></a></li>
-<li><a class="reference internal" href="#id47"><code class="docutils literal notranslate"><span class="pre">Plan.action</span></code></a></li>
-<li><a class="reference internal" href="#id48"><code class="docutils literal notranslate"><span class="pre">Plan.created_at</span></code></a></li>
-<li><a class="reference internal" href="#id49"><code class="docutils literal notranslate"><span class="pre">Plan.description</span></code></a></li>
-<li><a class="reference internal" href="#id50"><code class="docutils literal notranslate"><span class="pre">Plan.hook</span></code></a></li>
-<li><a class="reference internal" href="#id51"><code class="docutils literal notranslate"><span class="pre">Plan.id</span></code></a></li>
-<li><a class="reference internal" href="#id52"><code class="docutils literal notranslate"><span class="pre">Plan.max_failure_retry</span></code></a></li>
-<li><a class="reference internal" href="#id53"><code class="docutils literal notranslate"><span class="pre">Plan.parent_plan_id</span></code></a></li>
-<li><a class="reference internal" href="#id54"><code class="docutils literal notranslate"><span class="pre">Plan.period_time</span></code></a></li>
-<li><a class="reference internal" href="#id55"><code class="docutils literal notranslate"><span class="pre">Plan.status</span></code></a></li>
-<li><a class="reference internal" href="#id56"><code class="docutils literal notranslate"><span class="pre">Plan.type</span></code></a></li>
-<li><a class="reference internal" href="#id57"><code class="docutils literal notranslate"><span class="pre">Plan.updated_at</span></code></a></li>
-<li><a class="reference internal" href="#id58"><code class="docutils literal notranslate"><span class="pre">Plan.user_id</span></code></a></li>
+<li><a class="reference internal" href="#id48"><code class="docutils literal notranslate"><span class="pre">Plan.action</span></code></a></li>
+<li><a class="reference internal" href="#id49"><code class="docutils literal notranslate"><span class="pre">Plan.created_at</span></code></a></li>
+<li><a class="reference internal" href="#id50"><code class="docutils literal notranslate"><span class="pre">Plan.description</span></code></a></li>
+<li><a class="reference internal" href="#id51"><code class="docutils literal notranslate"><span class="pre">Plan.hook</span></code></a></li>
+<li><a class="reference internal" href="#id52"><code class="docutils literal notranslate"><span class="pre">Plan.id</span></code></a></li>
+<li><a class="reference internal" href="#id53"><code class="docutils literal notranslate"><span class="pre">Plan.max_failure_retry</span></code></a></li>
+<li><a class="reference internal" href="#id54"><code class="docutils literal notranslate"><span class="pre">Plan.parent_plan_id</span></code></a></li>
+<li><a class="reference internal" href="#id55"><code class="docutils literal notranslate"><span class="pre">Plan.period_time</span></code></a></li>
+<li><a class="reference internal" href="#id56"><code class="docutils literal notranslate"><span class="pre">Plan.status</span></code></a></li>
+<li><a class="reference internal" href="#id57"><code class="docutils literal notranslate"><span class="pre">Plan.type</span></code></a></li>
+<li><a class="reference internal" href="#id58"><code class="docutils literal notranslate"><span class="pre">Plan.updated_at</span></code></a></li>
+<li><a class="reference internal" href="#id59"><code class="docutils literal notranslate"><span class="pre">Plan.user_id</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Plan.Recurring"><code class="docutils literal notranslate"><span class="pre">Recurring</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.models.Plan.Recurring.end_at"><code class="docutils literal notranslate"><span class="pre">Recurring.end_at</span></code></a></li>
-<li><a class="reference internal" href="#id59"><code class="docutils literal notranslate"><span class="pre">Recurring.end_at</span></code></a></li>
+<li><a class="reference internal" href="#id60"><code class="docutils literal notranslate"><span class="pre">Recurring.end_at</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Plan.Recurring.type"><code class="docutils literal notranslate"><span class="pre">Recurring.type</span></code></a></li>
 </ul>
 </li>
@@ -287,22 +309,22 @@
 <li><a class="reference internal" href="#karya.commons.entities.models.Task.Task.created_at"><code class="docutils literal notranslate"><span class="pre">Task.created_at</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Task.Task.executed_at"><code class="docutils literal notranslate"><span class="pre">Task.executed_at</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.Task.Task.next_execution_at"><code class="docutils literal notranslate"><span class="pre">Task.next_execution_at</span></code></a></li>
-<li><a class="reference internal" href="#id60"><code class="docutils literal notranslate"><span class="pre">Task.created_at</span></code></a></li>
-<li><a class="reference internal" href="#id61"><code class="docutils literal notranslate"><span class="pre">Task.executed_at</span></code></a></li>
-<li><a class="reference internal" href="#id62"><code class="docutils literal notranslate"><span class="pre">Task.id</span></code></a></li>
-<li><a class="reference internal" href="#id63"><code class="docutils literal notranslate"><span class="pre">Task.next_execution_at</span></code></a></li>
-<li><a class="reference internal" href="#id64"><code class="docutils literal notranslate"><span class="pre">Task.partition_key</span></code></a></li>
-<li><a class="reference internal" href="#id65"><code class="docutils literal notranslate"><span class="pre">Task.plan_id</span></code></a></li>
-<li><a class="reference internal" href="#id66"><code class="docutils literal notranslate"><span class="pre">Task.status</span></code></a></li>
+<li><a class="reference internal" href="#id61"><code class="docutils literal notranslate"><span class="pre">Task.created_at</span></code></a></li>
+<li><a class="reference internal" href="#id62"><code class="docutils literal notranslate"><span class="pre">Task.executed_at</span></code></a></li>
+<li><a class="reference internal" href="#id63"><code class="docutils literal notranslate"><span class="pre">Task.id</span></code></a></li>
+<li><a class="reference internal" href="#id64"><code class="docutils literal notranslate"><span class="pre">Task.next_execution_at</span></code></a></li>
+<li><a class="reference internal" href="#id65"><code class="docutils literal notranslate"><span class="pre">Task.partition_key</span></code></a></li>
+<li><a class="reference internal" href="#id66"><code class="docutils literal notranslate"><span class="pre">Task.plan_id</span></code></a></li>
+<li><a class="reference internal" href="#id67"><code class="docutils literal notranslate"><span class="pre">Task.status</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.commons.entities.models.User.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a><ul>
 <li><a class="reference internal" href="#karya.commons.entities.models.User.User.id"><code class="docutils literal notranslate"><span class="pre">User.id</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.User.User.name"><code class="docutils literal notranslate"><span class="pre">User.name</span></code></a></li>
 <li><a class="reference internal" href="#karya.commons.entities.models.User.User.created_at"><code class="docutils literal notranslate"><span class="pre">User.created_at</span></code></a></li>
-<li><a class="reference internal" href="#id67"><code class="docutils literal notranslate"><span class="pre">User.created_at</span></code></a></li>
-<li><a class="reference internal" href="#id68"><code class="docutils literal notranslate"><span class="pre">User.id</span></code></a></li>
-<li><a class="reference internal" href="#id69"><code class="docutils literal notranslate"><span class="pre">User.name</span></code></a></li>
+<li><a class="reference internal" href="#id68"><code class="docutils literal notranslate"><span class="pre">User.created_at</span></code></a></li>
+<li><a class="reference internal" href="#id69"><code class="docutils literal notranslate"><span class="pre">User.id</span></code></a></li>
+<li><a class="reference internal" href="#id70"><code class="docutils literal notranslate"><span class="pre">User.name</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -350,10 +372,296 @@ This here is the documentation for the Karya API client, a Python library for in
 <section id="usage-examples">
 <h1>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h1>
 <p>These are some usage examples to help you get started with the Karya API client.</p>
+<dl class="py function" id="module-samples.make_delayed_api_call_with_failure_hook">
+<dt class="sig sig-object py" id="samples.make_delayed_api_call_with_failure_hook.main">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">samples.make_delayed_api_call_with_failure_hook.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/samples/make_delayed_api_call_with_failure_hook.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#samples.make_delayed_api_call_with_failure_hook.main" title="Link to this definition"></a></dt>
+<dd><p>In this sample, we shall submit a plan with a failure hook to make a one-time API call</p>
+<p>This function demonstrates how to use the Karya API client to:</p>
+<ol class="arabic simple">
+<li><p>Create a new user.</p></li>
+<li><p>Submit a plan with a failure hook.</p></li>
+<li><p>Retrieve a plan’s summary.</p></li>
+</ol>
+<p>The function uses the <cite>KaryaRestClient</cite> to interact with the API, sends requests,
+and prints the resulting user, plan, and summary data to the console.</p>
+</dd></dl>
+
+<dl class="py function" id="module-samples.make_delayed_chained_karya_call">
+<dt class="sig sig-object py" id="samples.make_delayed_chained_karya_call.main">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">samples.make_delayed_chained_karya_call.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/samples/make_delayed_chained_karya_call.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#samples.make_delayed_chained_karya_call.main" title="Link to this definition"></a></dt>
+<dd><p>In this sample, we shall submit a plan with a chained action to make a recurring API call.</p>
+<p>This function demonstrates how to:</p>
+<ol class="arabic simple">
+<li><p>Create a new user using the Karya API.</p></li>
+<li><p>Submit a recurring plan with a chained API request.</p></li>
+<li><p>Submit a one-time plan that includes a chained API action.</p></li>
+</ol>
+<p>The function uses the <cite>KaryaRestClient</cite> to interact with the Karya API, sends requests,
+and prints the resulting user and plan details to the console.</p>
+</dd></dl>
+
+<dl class="py function" id="module-samples.make_delayed_email_request">
+<dt class="sig sig-object py" id="samples.make_delayed_email_request.main">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">samples.make_delayed_email_request.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/samples/make_delayed_email_request.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#samples.make_delayed_email_request.main" title="Link to this definition"></a></dt>
+<dd><p>In this sample, we shall submit a plan with a one-time email request.</p>
+<p>This function demonstrates how to:</p>
+<ol class="arabic simple">
+<li><p>Create a new user using the Karya API.</p></li>
+<li><p>Submit a one-time plan that sends an email request.</p></li>
+<li><p>Print the resulting user and plan details to the console.</p></li>
+</ol>
+<p>The function uses the <cite>KaryaRestClient</cite> to interact with the API and handles both
+user creation and email action submission.</p>
+</dd></dl>
+
+<dl class="py function" id="module-samples.make_recurring_api_call">
+<dt class="sig sig-object py" id="samples.make_recurring_api_call.main">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">samples.make_recurring_api_call.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/samples/make_recurring_api_call.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#samples.make_recurring_api_call.main" title="Link to this definition"></a></dt>
+<dd><p>In this sample, we shall submit a plan with a REST API request action to make a recurring API call.</p>
+<p>This function demonstrates how to:</p>
+<ol class="arabic simple">
+<li><p>Create a new user using the Karya API.</p></li>
+<li><p>Submit a recurring plan that makes a REST API call.</p></li>
+<li><p>Print the resulting user and plan details to the console.</p></li>
+</ol>
+<p>The function uses the <cite>KaryaRestClient</cite> to interact with the API and includes:
+- Creating a user
+- Defining and submitting a recurring plan with a REST API request as the action
+- Handling the submission and displaying the results</p>
+</dd></dl>
+
+<dl class="py function" id="module-samples.make_recurring_push_to_kafka">
+<dt class="sig sig-object py" id="samples.make_recurring_push_to_kafka.main">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">samples.make_recurring_push_to_kafka.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/samples/make_recurring_push_to_kafka.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#samples.make_recurring_push_to_kafka.main" title="Link to this definition"></a></dt>
+<dd><p>In this sample, we shall submit a plan with a recurring Kafka message action.</p>
+<ol class="arabic simple">
+<li><p>Creating a user through the Karya API.</p></li>
+<li><p>Creating a recurring plan to send a Kafka message.</p></li>
+<li><p>Submitting the plan and printing the plan details.</p></li>
+</ol>
+<p>This function leverages the <cite>KaryaRestClient</cite> to:
+- Create a user.
+- Define and submit a recurring plan that sends a message to a Kafka topic.</p>
+</dd></dl>
+
+<dl class="py function" id="module-samples.make_recurring_slack_request">
+<dt class="sig sig-object py" id="samples.make_recurring_slack_request.main">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">samples.make_recurring_slack_request.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/samples/make_recurring_slack_request.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#samples.make_recurring_slack_request.main" title="Link to this definition"></a></dt>
+<dd><p>In this sample, we shall submit a plan with a recurring Slack message action.</p>
+<ol class="arabic simple">
+<li><p>Creating a user.</p></li>
+<li><p>Creating a recurring plan that sends a Slack message every 7 seconds.</p></li>
+<li><p>Submitting the plan to the API and printing the plan details.</p></li>
+</ol>
+<p>This function demonstrates how to:
+- Create a user.
+- Define and submit a recurring plan that sends a message to a Slack channel.</p>
+</dd></dl>
+
 </section>
-<section id="module-karya.commons.client">
-<span id="api-documentation"></span><h1>API Documentation<a class="headerlink" href="#module-karya.commons.client" title="Link to this heading"></a></h1>
+<section id="module-karya.clients.KaryaRestClient">
+<span id="api-documentation"></span><h1>API Documentation<a class="headerlink" href="#module-karya.clients.KaryaRestClient" title="Link to this heading"></a></h1>
 <dl class="py class">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">karya.clients.KaryaRestClient.</span></span><span class="sig-name descname"><span class="pre">KaryaRestClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#karya.commons.config.ClientConfig" title="karya.commons.config.ClientConfig"><span class="pre">ClientConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#karya.commons.client.Client" title="karya.commons.client.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code></a></p>
+<p>A client for interacting with the Karya API over REST.</p>
+<p>This client provides methods to manage users and plans, such as creating a user,
+submitting a plan, fetching plans, updating plans, and getting summaries of plans.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">create_user(request</span></span></dt>
+<dd><p>CreateUserRequest) -&gt; User:
+Creates a new user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">submit_plan(request</span></span></dt>
+<dd><p>SubmitPlanRequest) -&gt; Plan:
+Submits a new plan.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_plan(plan_id</span></span></dt>
+<dd><p>str) -&gt; GetPlanResponse:
+Retrieves details of a specific plan.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">update_plan(request</span></span></dt>
+<dd><p>UpdatePlanRequest) -&gt; Plan:
+Updates an existing plan.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cancel_plan(plan_id</span></span></dt>
+<dd><p>str) -&gt; Plan:
+Cancels a specified plan.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_summary(plan_id</span></span></dt>
+<dd><p>str) -&gt; GetSummaryResponse:
+Retrieves the summary of a specific plan.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.close" title="Link to this definition"></a></dt>
+<dd><p>Closes the HTTP client connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.api_version">
+<span class="sig-name descname"><span class="pre">api_version</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'v1'</span></em><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.api_version" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.cancel_plan">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cancel_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan"><span class="pre">Plan</span></a></span></span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient.cancel_plan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.cancel_plan" title="Link to this definition"></a></dt>
+<dd><p>Cancels a specified plan by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plan_id</strong> (<em>str</em>) – The ID of the plan to cancel.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Plan object reflecting the canceled plan.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan">Plan</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Closes the HTTP client connection.</p>
+<p>This should be called when the client is no longer needed to ensure that
+resources are cleaned up properly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.create_user">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#karya.commons.entities.requests.CreateUserRequest" title="karya.commons.entities.requests.CreateUserRequest"><span class="pre">CreateUserRequest</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.commons.entities.models.User.User" title="karya.commons.entities.models.User.User"><span class="pre">User</span></a></span></span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient.create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.create_user" title="Link to this definition"></a></dt>
+<dd><p>Creates a new user by sending a POST request to the Karya API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<a class="reference internal" href="#karya.commons.entities.requests.CreateUserRequest" title="karya.commons.entities.requests.CreateUserRequest"><em>CreateUserRequest</em></a>) – The request object containing user data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A User object containing the details of the created user.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#karya.commons.entities.models.User.User" title="karya.commons.entities.models.User.User">User</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.get_plan">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.commons.entities.response.GetPlanResponse" title="karya.commons.entities.response.GetPlanResponse"><span class="pre">GetPlanResponse</span></a></span></span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient.get_plan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.get_plan" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the details of a specific plan by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plan_id</strong> (<em>str</em>) – The ID of the plan to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A response object containing the plan details.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#karya.commons.entities.response.GetPlanResponse" title="karya.commons.entities.response.GetPlanResponse">GetPlanResponse</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.get_summary">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.commons.entities.response.GetSummaryResponse" title="karya.commons.entities.response.GetSummaryResponse"><span class="pre">GetSummaryResponse</span></a></span></span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient.get_summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.get_summary" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the summary for a specific plan by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plan_id</strong> (<em>str</em>) – The ID of the plan for which to retrieve the summary.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A response object containing the summary data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#karya.commons.entities.response.GetSummaryResponse" title="karya.commons.entities.response.GetSummaryResponse">GetSummaryResponse</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.plans_endpoint">
+<span class="sig-name descname"><span class="pre">plans_endpoint</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'v1/plan'</span></em><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.plans_endpoint" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.submit_plan">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">submit_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#karya.commons.entities.requests.SubmitPlanRequest" title="karya.commons.entities.requests.SubmitPlanRequest"><span class="pre">SubmitPlanRequest</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan"><span class="pre">Plan</span></a></span></span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient.submit_plan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.submit_plan" title="Link to this definition"></a></dt>
+<dd><p>Submits a new plan to the Karya API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<a class="reference internal" href="#karya.commons.entities.requests.SubmitPlanRequest" title="karya.commons.entities.requests.SubmitPlanRequest"><em>SubmitPlanRequest</em></a>) – The request object containing plan data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Plan object containing the details of the submitted plan.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan">Plan</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.update_plan">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#karya.commons.entities.requests.UpdatePlanRequest" title="karya.commons.entities.requests.UpdatePlanRequest"><span class="pre">UpdatePlanRequest</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan"><span class="pre">Plan</span></a></span></span><a class="reference internal" href="_modules/karya/clients/KaryaRestClient.html#KaryaRestClient.update_plan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.update_plan" title="Link to this definition"></a></dt>
+<dd><p>Updates an existing plan with new details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<a class="reference internal" href="#karya.commons.entities.requests.UpdatePlanRequest" title="karya.commons.entities.requests.UpdatePlanRequest"><em>UpdatePlanRequest</em></a>) – The request object containing updated plan data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Plan object containing the updated plan details.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan">Plan</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.KaryaRestClient.users_endpoint">
+<span class="sig-name descname"><span class="pre">users_endpoint</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'v1/user'</span></em><a class="headerlink" href="#karya.clients.KaryaRestClient.KaryaRestClient.users_endpoint" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-karya.commons.client">
 <dt class="sig sig-object py" id="karya.commons.client.Client">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">karya.commons.client.</span></span><span class="sig-name descname"><span class="pre">Client</span></span><a class="reference internal" href="_modules/karya/commons/client.html#Client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.commons.client.Client" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
@@ -429,8 +737,8 @@ the actual plan cancellation endpoint in the API.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id0">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/karya/commons/client.html#Client.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/karya/commons/client.html#Client.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
 <dd><p>Closes any active connections or resources held by the client.</p>
 <p>This method should be implemented by a concrete subclass to ensure any
 resources, such as open HTTP connections, are cleaned up when the client
@@ -588,8 +896,8 @@ generating the base URL and for returning a default development configuration.</
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id1">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.commons.config.ClientConfig" title="karya.commons.config.ClientConfig"><span class="pre">ClientConfig</span></a></span></span><a class="reference internal" href="_modules/karya/commons/config.html#ClientConfig.dev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id2">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.commons.config.ClientConfig" title="karya.commons.config.ClientConfig"><span class="pre">ClientConfig</span></a></span></span><a class="reference internal" href="_modules/karya/commons/config.html#ClientConfig.dev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
 <dd><p>Returns a default configuration for development purposes.</p>
 <p>This method returns a configuration that uses HTTP as the protocol, “localhost” as the host,
 and port 8080. It is intended for use in local development environments where the API is
@@ -608,8 +916,8 @@ ClientConfig(protocol=Protocol.HTTP, host=”localhost”, port=8080)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">get_base_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/karya/commons/config.html#ClientConfig.get_base_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">get_base_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/karya/commons/config.html#ClientConfig.get_base_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
 <dd><p>Generates and returns the base URL for the API.</p>
 <p>The base URL is constructed by combining the protocol, host, and port attributes
 of the ClientConfig. This is useful for constructing full URLs for API requests.</p>
@@ -632,18 +940,18 @@ port = 8080</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">host</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">host</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">protocol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.Protocol" title="karya.commons.entities.enums.Protocol"><span class="pre">Protocol</span></a></em><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">protocol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.Protocol" title="karya.commons.entities.enums.Protocol"><span class="pre">Protocol</span></a></em><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -850,8 +1158,8 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id6">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -939,38 +1247,38 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id7">
-<span class="sig-name descname"><span class="pre">action</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.ActionType" title="karya.commons.entities.base.ActionType"><span class="pre">ActionType</span></a></em><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id8">
-<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">action</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.ActionType" title="karya.commons.entities.base.ActionType"><span class="pre">ActionType</span></a></em><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id9">
-<span class="sig-name descname"><span class="pre">hooks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook" title="karya.commons.entities.models.Hook.Hook"><span class="pre">Hook</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id10">
-<span class="sig-name descname"><span class="pre">max_failure_retry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">hooks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook" title="karya.commons.entities.models.Hook.Hook"><span class="pre">Hook</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id11">
-<span class="sig-name descname"><span class="pre">period_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">max_failure_retry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id12">
-<span class="sig-name descname"><span class="pre">plan_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.PlanType" title="karya.commons.entities.base.PlanType"><span class="pre">PlanType</span></a></em><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">period_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id13">
-<span class="sig-name descname"><span class="pre">user_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plan_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.PlanType" title="karya.commons.entities.base.PlanType"><span class="pre">PlanType</span></a></em><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">user_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1025,23 +1333,23 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id14">
-<span class="sig-name descname"><span class="pre">hooks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook" title="karya.commons.entities.models.Hook.Hook"><span class="pre">Hook</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id15">
-<span class="sig-name descname"><span class="pre">maxFailureRetry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">hooks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook" title="karya.commons.entities.models.Hook.Hook"><span class="pre">Hook</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id16">
-<span class="sig-name descname"><span class="pre">periodTime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">maxFailureRetry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id17">
-<span class="sig-name descname"><span class="pre">planId</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id17" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">periodTime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id17" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id18">
+<span class="sig-name descname"><span class="pre">planId</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id18" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1074,13 +1382,13 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id18">
-<span class="sig-name descname"><span class="pre">latest_task</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.models.Task.Task" title="karya.commons.entities.models.Task.Task"><span class="pre">Task</span></a></em><a class="headerlink" href="#id18" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id19">
+<span class="sig-name descname"><span class="pre">latest_task</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.models.Task.Task" title="karya.commons.entities.models.Task.Task"><span class="pre">Task</span></a></em><a class="headerlink" href="#id19" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id19">
-<span class="sig-name descname"><span class="pre">plan</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan"><span class="pre">Plan</span></a></em><a class="headerlink" href="#id19" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id20">
+<span class="sig-name descname"><span class="pre">plan</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan"><span class="pre">Plan</span></a></em><a class="headerlink" href="#id20" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1124,18 +1432,18 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id20">
-<span class="sig-name descname"><span class="pre">error_logs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.ErrorLog.ErrorLog" title="karya.commons.entities.models.ErrorLog.ErrorLog"><span class="pre">ErrorLog</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id20" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id21">
-<span class="sig-name descname"><span class="pre">plan</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan"><span class="pre">Plan</span></a></em><a class="headerlink" href="#id21" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">error_logs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.ErrorLog.ErrorLog" title="karya.commons.entities.models.ErrorLog.ErrorLog"><span class="pre">ErrorLog</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id21" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id22">
-<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.Task.Task" title="karya.commons.entities.models.Task.Task"><span class="pre">Task</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id22" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plan</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.models.Plan.Plan" title="karya.commons.entities.models.Plan.Plan"><span class="pre">Plan</span></a></em><a class="headerlink" href="#id22" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id23">
+<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.Task.Task" title="karya.commons.entities.models.Task.Task"><span class="pre">Task</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id23" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1157,8 +1465,8 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id23">
-<span class="sig-name descname"><span class="pre">request</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.requests.SubmitPlanRequest" title="karya.commons.entities.requests.SubmitPlanRequest"><span class="pre">SubmitPlanRequest</span></a></em><a class="headerlink" href="#id23" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id24">
+<span class="sig-name descname"><span class="pre">request</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.requests.SubmitPlanRequest" title="karya.commons.entities.requests.SubmitPlanRequest"><span class="pre">SubmitPlanRequest</span></a></em><a class="headerlink" href="#id24" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1207,18 +1515,18 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id24">
-<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id24" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id25">
-<span class="sig-name descname"><span class="pre">recipient</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id25" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id25" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id26">
-<span class="sig-name descname"><span class="pre">subject</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id26" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">recipient</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id26" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id27">
+<span class="sig-name descname"><span class="pre">subject</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id27" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1267,18 +1575,18 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id27">
-<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id27" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id28">
-<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id28" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id28" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id29">
-<span class="sig-name descname"><span class="pre">topic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id29" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id29" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id30">
+<span class="sig-name descname"><span class="pre">topic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id30" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1360,33 +1668,33 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id30">
-<span class="sig-name descname"><span class="pre">base_url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id30" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id31">
-<span class="sig-name descname"><span class="pre">body</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.HttpBodyType" title="karya.commons.entities.base.HttpBodyType"><span class="pre">HttpBodyType</span></a></em><a class="headerlink" href="#id31" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">base_url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id31" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id32">
-<span class="sig-name descname"><span class="pre">headers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#id32" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">body</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.HttpBodyType" title="karya.commons.entities.base.HttpBodyType"><span class="pre">HttpBodyType</span></a></em><a class="headerlink" href="#id32" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id33">
-<span class="sig-name descname"><span class="pre">method</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.Method" title="karya.commons.entities.enums.Method"><span class="pre">Method</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GET'</span></em><a class="headerlink" href="#id33" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">headers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#id33" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id34">
-<span class="sig-name descname"><span class="pre">protocol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.Protocol" title="karya.commons.entities.enums.Protocol"><span class="pre">Protocol</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HTTP'</span></em><a class="headerlink" href="#id34" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">method</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.Method" title="karya.commons.entities.enums.Method"><span class="pre">Method</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GET'</span></em><a class="headerlink" href="#id34" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id35">
-<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2000</span></em><a class="headerlink" href="#id35" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">protocol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.Protocol" title="karya.commons.entities.enums.Protocol"><span class="pre">Protocol</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HTTP'</span></em><a class="headerlink" href="#id35" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id36">
+<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2000</span></em><a class="headerlink" href="#id36" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1424,13 +1732,13 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id36">
-<span class="sig-name descname"><span class="pre">channel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id36" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id37">
+<span class="sig-name descname"><span class="pre">channel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id37" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id37">
-<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id37" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id38">
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id38" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1490,23 +1798,23 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id38">
-<span class="sig-name descname"><span class="pre">error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id38" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id39">
-<span class="sig-name descname"><span class="pre">plan_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id39" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id39" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id40">
-<span class="sig-name descname"><span class="pre">timestamp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id40" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plan_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id40" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id41">
-<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.ErrorLogType" title="karya.commons.entities.base.ErrorLogType"><span class="pre">ErrorLogType</span></a></em><a class="headerlink" href="#id41" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">timestamp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id41" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id42">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.ErrorLogType" title="karya.commons.entities.base.ErrorLogType"><span class="pre">ErrorLogType</span></a></em><a class="headerlink" href="#id42" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1529,8 +1837,8 @@ Specific plan types should inherit from this class to provide custom behavior or
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id42">
-<span class="sig-name descname"><span class="pre">task_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id42" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id43">
+<span class="sig-name descname"><span class="pre">task_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id43" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1589,18 +1897,18 @@ when that condition is met. Additionally, it defines a maximum retry count in ca
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id43">
-<span class="sig-name descname"><span class="pre">action</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.ActionType" title="karya.commons.entities.base.ActionType"><span class="pre">ActionType</span></a></em><a class="headerlink" href="#id43" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id44">
-<span class="sig-name descname"><span class="pre">max_retry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#id44" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">action</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.ActionType" title="karya.commons.entities.base.ActionType"><span class="pre">ActionType</span></a></em><a class="headerlink" href="#id44" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id45">
-<span class="sig-name descname"><span class="pre">trigger</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.Trigger" title="karya.commons.entities.enums.Trigger"><span class="pre">Trigger</span></a></em><a class="headerlink" href="#id45" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">max_retry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#id45" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id46">
+<span class="sig-name descname"><span class="pre">trigger</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.Trigger" title="karya.commons.entities.enums.Trigger"><span class="pre">Trigger</span></a></em><a class="headerlink" href="#id46" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1656,8 +1964,8 @@ performing actions like sending data to an API.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id46">
-<span class="sig-name descname"><span class="pre">json_string</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id46" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id47">
+<span class="sig-name descname"><span class="pre">json_string</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id47" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1820,63 +2128,63 @@ It includes metadata such as plan description, status, failure retries, associat
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id47">
-<span class="sig-name descname"><span class="pre">action</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.ActionType" title="karya.commons.entities.base.ActionType"><span class="pre">ActionType</span></a></em><a class="headerlink" href="#id47" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id48">
-<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id48" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">action</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.ActionType" title="karya.commons.entities.base.ActionType"><span class="pre">ActionType</span></a></em><a class="headerlink" href="#id48" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id49">
-<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id49" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id49" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id50">
-<span class="sig-name descname"><span class="pre">hook</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook" title="karya.commons.entities.models.Hook.Hook"><span class="pre">Hook</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id50" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id50" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id51">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id51" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">hook</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.commons.entities.models.Hook.Hook" title="karya.commons.entities.models.Hook.Hook"><span class="pre">Hook</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id51" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id52">
-<span class="sig-name descname"><span class="pre">max_failure_retry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id52" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id52" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id53">
-<span class="sig-name descname"><span class="pre">parent_plan_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id53" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">max_failure_retry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id53" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id54">
-<span class="sig-name descname"><span class="pre">period_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id54" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">parent_plan_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id54" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id55">
-<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.PlanStatus" title="karya.commons.entities.enums.PlanStatus"><span class="pre">PlanStatus</span></a></em><a class="headerlink" href="#id55" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">period_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id55" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id56">
-<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.PlanType" title="karya.commons.entities.base.PlanType"><span class="pre">PlanType</span></a></em><a class="headerlink" href="#id56" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.PlanStatus" title="karya.commons.entities.enums.PlanStatus"><span class="pre">PlanStatus</span></a></em><a class="headerlink" href="#id56" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id57">
-<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id57" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.base.PlanType" title="karya.commons.entities.base.PlanType"><span class="pre">PlanType</span></a></em><a class="headerlink" href="#id57" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id58">
-<span class="sig-name descname"><span class="pre">user_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id58" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id58" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id59">
+<span class="sig-name descname"><span class="pre">user_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id59" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1900,8 +2208,8 @@ specifies when the plan will stop recurring. If <cite>end_at</cite> is <cite>Non
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id59">
-<span class="sig-name descname"><span class="pre">end_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id59" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id60">
+<span class="sig-name descname"><span class="pre">end_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id60" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1996,38 +2304,38 @@ and has timestamps for tracking its lifecycle (when it was created, when it was 
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id60">
-<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id60" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id61">
-<span class="sig-name descname"><span class="pre">executed_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id61" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id61" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id62">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id62" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">executed_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id62" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id63">
-<span class="sig-name descname"><span class="pre">next_execution_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id63" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id63" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id64">
-<span class="sig-name descname"><span class="pre">partition_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id64" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">next_execution_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id64" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id65">
-<span class="sig-name descname"><span class="pre">plan_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id65" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">partition_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id65" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id66">
-<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.TaskStatus" title="karya.commons.entities.enums.TaskStatus"><span class="pre">TaskStatus</span></a></em><a class="headerlink" href="#id66" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plan_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id66" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id67">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#karya.commons.entities.enums.TaskStatus" title="karya.commons.entities.enums.TaskStatus"><span class="pre">TaskStatus</span></a></em><a class="headerlink" href="#id67" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2073,18 +2381,18 @@ name, and the timestamp of when they were created in the system.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id67">
-<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id67" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="id68">
-<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id68" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id68" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id69">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id69" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id69" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id70">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id70" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
