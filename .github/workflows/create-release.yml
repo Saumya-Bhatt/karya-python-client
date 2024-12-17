@@ -26,7 +26,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install poetry
-        pip install toml
 
     - name: Install project dependencies
       run: |
@@ -36,16 +35,15 @@ jobs:
       run: |
         poetry build
 
-    - name: Generate a tag for the release
+    - name: Generate release tag
+      id: tag
       run: |
-        # Extract version from pyproject.toml using python's toml module
-        VERSION=$(python -c "import toml; print(toml.load('pyproject.toml')['tool']['poetry']['version'])")
-        git tag "v$VERSION"
-        git push origin "v$VERSION"
+        echo "::set-output name=release_tag::karya-client_$(date +"%Y.%m.%d_%H-%M")"
 
     - name: Create GitHub release and upload package
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: ${{ steps.tag.outputs.release_tag }}
         files: |
           dist/*
       env:
