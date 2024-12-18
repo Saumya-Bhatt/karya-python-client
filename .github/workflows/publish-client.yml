@@ -64,7 +64,7 @@ jobs:
           fi
           exit 0
 
-  publish_to_github:
+  publish_client:
     needs: check_version
     if: needs.check_version.outputs.should_publish == 'true'
     runs-on: ubuntu-latest
