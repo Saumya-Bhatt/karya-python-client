@@ -2,8 +2,6 @@
 
 This here is the Python client to interract with [Karya - the open sourced distributed job scheduler](https://github.com/Saumya-Bhatt/karya)
 
-> Current Stable Version : **0.1.0**
-
 - [API Docs](https://saumya-bhatt.github.io/karya-python-client)
 - [How to contribute](./.github/CONTRIBUTING.md)
 
@@ -15,7 +13,11 @@ This section highlights the steps to get started with the Karya Python client.
 
 ### Installation
 
-The distribution files can be found on the latest releases on [Github](https://github.com/Saumya-Bhatt/karya-python-client/releases) 
+```shell
+    pip install karya-client
+```
+
+The distribution files can also be found here - [Github Release](https://github.com/Saumya-Bhatt/karya-python-client/releases).
 
 ### Useage Examples
 
@@ -27,83 +29,83 @@ Do refer to the [Client API Documentation](https://saumya-bhatt.github.io/karya-
 
 1. Create a config object:
 
-    ```python
-    from karya.clients.config import ClientConfig
-    from karya.entities.enums import Protocol
+   ```python
+   from karya.clients.config import ClientConfig
+   from karya.entities.enums import Protocol
 
-    ## point this to where the Karya server is running
-    config = ClientConfig(
-        protocol=Portocol.HTTP,
-        host='localhost',
-        port=8080
-    )
+   ## point this to where the Karya server is running
+   config = ClientConfig(
+       protocol=Portocol.HTTP,
+       host='localhost',
+       port=8080
+   )
 
-    ## For localsetup, a default config is provided as: ClientConfig.dev()
-    ```
+   ## For localsetup, a default config is provided as: ClientConfig.dev()
+   ```
 
 2. Create a client object:
 
-    ```python
-    from karya.clients import KaryaRestClient
+   ```python
+   from karya.clients import KaryaRestClient
 
-    client = KaryaRestClient(config)
-    ```
+   client = KaryaRestClient(config)
+   ```
 
 3. Creat a user. Only a user configured in the Karya server can be used to create a client object.
 
-    ```python
-    from karya.clients.requests import CreateUserRequest
+   ```python
+   from karya.clients.requests import CreateUserRequest
 
-    create_user_request = CreateUserRequest(name="python-client")
-    user = await client.create_user(create_user_request)
-    ```
+   create_user_request = CreateUserRequest(name="python-client")
+   user = await client.create_user(create_user_request)
+   ```
 
 4. Specify the action that you would want to trigger once the task is scheduled.
 
-    ```python
-    from karya.entities.actions import RestApiRequest
+   ```python
+   from karya.entities.actions import RestApiRequest
 
-    ## For example, we shall be making a POST request to a local server
-    action = RestApiRequest(
-        protocol=Protocol.HTTPS,  # Use HTTPS for secure communication
-        base_url="localhost",  # Base URL for the REST API
-        method=Method.POST,  # HTTP method for the request (POST)
-        headers={"content-type": "application/json"},  # Set the content type to JSON
-        body=RestApiRequest.JsonBody.from_dict(
-            {"message": "Hello from python client"}
-        ),  # JSON body to send in the request
-        timeout=2000,  # Timeout for the request (in milliseconds)
-    )
-    ```
+   ## For example, we shall be making a POST request to a local server
+   action = RestApiRequest(
+       protocol=Protocol.HTTPS,  # Use HTTPS for secure communication
+       base_url="localhost",  # Base URL for the REST API
+       method=Method.POST,  # HTTP method for the request (POST)
+       headers={"content-type": "application/json"},  # Set the content type to JSON
+       body=RestApiRequest.JsonBody.from_dict(
+           {"message": "Hello from python client"}
+       ),  # JSON body to send in the request
+       timeout=2000,  # Timeout for the request (in milliseconds)
+   )
+   ```
 
 5. Submit the plan to Karya.
 
-    > `period_time` has to be in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) format.
+   > `period_time` has to be in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) format.
 
-    ```python
-    from karya.clients.requests SubmitPlanRequest
-    from karya.entities.plan_types import Recurring
+   ```python
+   from karya.clients.requests SubmitPlanRequest
+   from karya.entities.plan_types import Recurring
 
-    # For example, we shall be submitting a recurring plan
-    plan_request = SubmitPlanRequest(
-        user_id=user.id,  # Use the created user's ID
-        description="Make a recurring API call from python client",  # Description of the plan
-        period_time="PT7S",  # Time period between each execution (7 seconds)
-        max_failure_retry=3,  # Retry count in case of failure
-        plan_type=Recurring(  # Define a recurring plan
-            end_at=None,  # No specific end time, so it will continue indefinitely
-        ),
-        action=rest_action,  # The action to be executed as part of the plan (REST API call)
-    )
+   # For example, we shall be submitting a recurring plan
+   plan_request = SubmitPlanRequest(
+       user_id=user.id,  # Use the created user's ID
+       description="Make a recurring API call from python client",  # Description of the plan
+       period_time="PT7S",  # Time period between each execution (7 seconds)
+       max_failure_retry=3,  # Retry count in case of failure
+       plan_type=Recurring(  # Define a recurring plan
+           end_at=None,  # No specific end time, so it will continue indefinitely
+       ),
+       action=rest_action,  # The action to be executed as part of the plan (REST API call)
+   )
 
-    plan = await client.submit_plan(plan_request)
-    ```
+   plan = await client.submit_plan(plan_request)
+   ```
 
 6. And you're done! The plan will be executed as per the schedule:
 
-    - The action will be triggered every 7 seconds.
-    - The action will make a POST request to `localhost` with the JSON body `{"message": "Hello from python client"}`
-    - The request will have a timeout of 2 seconds.
+   - The action will be triggered every 7 seconds.
+   - The action will make a POST request to `localhost` with the JSON body `{"message": "Hello from python client"}`
+   - The request will have a timeout of 2 seconds.
 
 ---
 
@@ -189,13 +191,12 @@ Chain another job to the current job.
 
 ```python
     hook = Hook(
-        hook_type=HookType  # Hook type 
+        hook_type=HookType  # Hook type
         action=ActionType,  # Can be any of the actions specified above
     )
 ```
 
 Hooks are used to trigger actions on certain triggers. The client supports the following hooks:
 
--  `ON_FAILURE`: Trigger an action when the plan fails.
+- `ON_FAILURE`: Trigger an action when the plan fails.
 - `ON_COMPLETION`: Trigger an action when the plan completes successfully.
-
