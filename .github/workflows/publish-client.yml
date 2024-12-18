@@ -4,12 +4,12 @@ on:
   push:
     branches:
       - main
-      - client_publish_update
     paths:
       - 'karya/**'
       - pyproject.toml
 
 jobs:
+  
   check_version:
     runs-on: ubuntu-latest
     outputs:
