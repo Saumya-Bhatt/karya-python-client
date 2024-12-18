@@ -1,0 +1,64 @@
+name: Create Github Release
+
+on:
+  push:
+    branches:
+      - main
+      - client_publish_update
+    paths:
+      - 'karya/**'
+      - pyproject.toml
+
+jobs:
+
+  publish-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
+        pip install toml
+
+    - name: Install project dependencies
+      run: |
+        poetry install --no-root
+
+    - name: Build the package
+      run: |
+        poetry build
+
+    - name: Fetch version
+      id: version
+      run: |
+        VERSION=$(python -c "import toml; print(toml.load('pyproject.toml')['tool']['poetry']['version'])")
+        echo "::set-output name=version::v$VERSION"
+
+    - name: Check if fetch version is greater than github release version
+      id: check_version
+      run: |
+        echo "Current version: ${{ steps.version.outputs.version }}"
+        echo "Latest release: ${{ github.event.release.tag_name }}"
+        if [ "${{ steps.version.outputs.version }}" = "${{ github.event.release.tag_name }}" ]; then
+          echo "No new version to release"
+          exit 1
+        fi
+
+    - name: Create an publish new release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ steps.version.outputs.version }}
+        files: |
+          dist/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
