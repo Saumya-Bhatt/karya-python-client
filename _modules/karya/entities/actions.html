@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>karya.entities.actions &mdash; Karya 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Karya
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Karya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../entities.html">karya.entities</a></li>
+      <li class="breadcrumb-item active">karya.entities.actions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for karya.entities.actions</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span> <span class="nn">karya.entities.abstracts</span> <span class="kn">import</span> <span class="n">AbstractAction</span>
+<span class="kn">from</span> <span class="nn">karya.entities.enums</span> <span class="kn">import</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Method</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">karya.clients.requests</span> <span class="kn">import</span> <span class="n">SubmitPlanRequest</span>
+
+
+<div class="viewcode-block" id="RestApiRequest">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.RestApiRequest">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">RestApiRequest</span><span class="p">(</span><span class="n">AbstractAction</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a REST API request action.</span>
+
+<span class="sd">    This class allows for defining a REST API request action, including the HTTP method,</span>
+<span class="sd">    protocol, headers, and request body. It includes nested classes for handling different</span>
+<span class="sd">    types of request bodies, such as JSON and empty bodies.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        base_url (str): The base URL for the REST API request.</span>
+<span class="sd">        body (AbstractBody): The body of the request, which can be JSON or empty.</span>
+<span class="sd">        protocol (Protocol): The protocol used for the request, default is `Protocol.HTTP`.</span>
+<span class="sd">        method (Method): The HTTP method for the request, default is `Method.GET`.</span>
+<span class="sd">        headers (dict): The headers for the request, default is `{&quot;content-type&quot;: &quot;application/json&quot;}`.</span>
+<span class="sd">        timeout (int): The timeout duration for the request in milliseconds, default is 2000.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="RestApiRequest.AbstractBody">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.RestApiRequest.AbstractBody">[docs]</a>
+    <span class="k">class</span> <span class="nc">AbstractBody</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;An abstract base class for request bodies.&quot;&quot;&quot;</span>
+
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RestApiRequest.JsonBody">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.RestApiRequest.JsonBody">[docs]</a>
+    <span class="nd">@dataclass</span>
+    <span class="k">class</span> <span class="nc">JsonBody</span><span class="p">(</span><span class="n">AbstractBody</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Represents a JSON body for a REST API request.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            json_string (str): The JSON-encoded string to be sent in the request body.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">json_string</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.http.Body.JsonBody&quot;</span>
+
+<div class="viewcode-block" id="RestApiRequest.JsonBody.from_dict">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.RestApiRequest.JsonBody.from_dict">[docs]</a>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;RestApiRequest.JsonBody&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Creates a `JsonBody` instance from a dictionary by converting it to a JSON string.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                data (Dict[str, Any]): A dictionary representing the data to be converted.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                RestApiRequest.JsonBody: A new instance of `JsonBody` containing the JSON string.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">json_string</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">))</span></div>
+</div>
+
+
+<div class="viewcode-block" id="RestApiRequest.EmptyBody">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.RestApiRequest.EmptyBody">[docs]</a>
+    <span class="nd">@dataclass</span>
+    <span class="k">class</span> <span class="nc">EmptyBody</span><span class="p">(</span><span class="n">AbstractAction</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Represents an empty body for a REST API request.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.http.Body.EmptyBody&quot;</span></div>
+
+
+    <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">body</span><span class="p">:</span> <span class="n">AbstractBody</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">RestApiRequest</span><span class="o">.</span><span class="n">EmptyBody</span><span class="p">())</span>
+    <span class="n">protocol</span><span class="p">:</span> <span class="n">Protocol</span> <span class="o">=</span> <span class="n">Protocol</span><span class="o">.</span><span class="n">HTTP</span>
+    <span class="n">method</span><span class="p">:</span> <span class="n">Method</span> <span class="o">=</span> <span class="n">Method</span><span class="o">.</span><span class="n">GET</span>
+    <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">})</span>
+    <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2000</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.Action.RestApiRequest&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="KafkaProducerRequest">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.KafkaProducerRequest">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">KafkaProducerRequest</span><span class="p">(</span><span class="n">AbstractAction</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a Kafka producer request action.</span>
+
+<span class="sd">    This class defines a Kafka producer request, including the topic, message, and optional key.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        topic (str): The Kafka topic to send the message to.</span>
+<span class="sd">        message (str): The message to be sent to the Kafka topic.</span>
+<span class="sd">        key (Optional[str]): An optional key to associate with the message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">topic</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.Action.KafkaProducerRequest&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ChainedRequest">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.ChainedRequest">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">ChainedRequest</span><span class="p">(</span><span class="n">AbstractAction</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a chained request action.</span>
+
+<span class="sd">    This class represents a request that chains another request (e.g., `SubmitPlanRequest`).</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        request (SubmitPlanRequest): The request to be chained.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">request</span><span class="p">:</span> <span class="s2">&quot;SubmitPlanRequest&quot;</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.Action.ChainedRequest&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="EmailRequest">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.EmailRequest">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">EmailRequest</span><span class="p">(</span><span class="n">AbstractAction</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents an email request action.</span>
+
+<span class="sd">    This class defines the properties required to send an email, including the recipient,</span>
+<span class="sd">    subject, and message body.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        recipient (str): The recipient&#39;s email address.</span>
+<span class="sd">        subject (str): The subject of the email.</span>
+<span class="sd">        message (str): The body content of the email.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">recipient</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">subject</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.Action.EmailRequest&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="SlackMessageRequest">
+<a class="viewcode-back" href="../../../index.html#karya.entities.actions.SlackMessageRequest">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">SlackMessageRequest</span><span class="p">(</span><span class="n">AbstractAction</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a Slack message request action.</span>
+
+<span class="sd">    This class defines the properties required to send a message to a Slack channel.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        channel (str): The Slack channel to send the message to.</span>
+<span class="sd">        message (str): The content of the message to be sent to the Slack channel.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">channel</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;karya.core.entities.Action.SlackMessageRequest&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Saumya Bhatt.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

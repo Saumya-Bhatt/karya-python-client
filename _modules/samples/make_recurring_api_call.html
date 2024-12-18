@@ -72,16 +72,15 @@
 <span class="c1"># Add the root directory of the project to the Python path</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">)))</span>
 
-<span class="kn">from</span> <span class="nn">karya.commons.config</span> <span class="kn">import</span> <span class="n">ClientConfig</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.requests</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">karya.clients.config</span> <span class="kn">import</span> <span class="n">ClientConfig</span>
+<span class="kn">from</span> <span class="nn">karya.clients</span> <span class="kn">import</span> <span class="n">KaryaRestClient</span>
+<span class="kn">from</span> <span class="nn">karya.clients.requests</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">CreateUserRequest</span><span class="p">,</span>
     <span class="n">SubmitPlanRequest</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.models.Action</span> <span class="kn">import</span> <span class="n">RestApiRequest</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.models.HttpBody</span> <span class="kn">import</span> <span class="n">JsonBody</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.models.Plan</span> <span class="kn">import</span> <span class="n">Recurring</span>
-<span class="kn">from</span> <span class="nn">karya.clients.KaryaRestClient</span> <span class="kn">import</span> <span class="n">KaryaRestClient</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.enums</span> <span class="kn">import</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Method</span>
+<span class="kn">from</span> <span class="nn">karya.entities.actions</span> <span class="kn">import</span> <span class="n">RestApiRequest</span>
+<span class="kn">from</span> <span class="nn">karya.entities.plan_types</span> <span class="kn">import</span> <span class="n">Recurring</span>
+<span class="kn">from</span> <span class="nn">karya.entities.enums</span> <span class="kn">import</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Method</span>
 
 
 <div class="viewcode-block" id="main">
@@ -117,7 +116,7 @@
         <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;eox7wbcodh9parh.m.pipedream.net&quot;</span><span class="p">,</span>  <span class="c1"># Base URL for the REST API</span>
         <span class="n">method</span><span class="o">=</span><span class="n">Method</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span>  <span class="c1"># HTTP method for the request (POST)</span>
         <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span>  <span class="c1"># Set the content type to JSON</span>
-        <span class="n">body</span><span class="o">=</span><span class="n">JsonBody</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+        <span class="n">body</span><span class="o">=</span><span class="n">RestApiRequest</span><span class="o">.</span><span class="n">JsonBody</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
             <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello from python client&quot;</span><span class="p">}</span>
         <span class="p">),</span>  <span class="c1"># JSON body to send in the request</span>
         <span class="n">timeout</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>  <span class="c1"># Timeout for the request (in milliseconds)</span>

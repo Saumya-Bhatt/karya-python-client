@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>karya.entities &mdash; Karya 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Karya
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Karya</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">karya.entities</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for karya.entities</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">karya.entities.enums</span> <span class="kn">import</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">PlanStatus</span><span class="p">,</span> <span class="n">Trigger</span>
+<span class="kn">from</span> <span class="nn">karya.entities.abstracts</span> <span class="kn">import</span> <span class="n">AbstractAction</span><span class="p">,</span> <span class="n">AbstractPlanType</span>
+
+
+<div class="viewcode-block" id="User">
+<a class="viewcode-back" href="../../index.html#karya.entities.User">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a user in the system.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (str): The unique identifier for the user.</span>
+<span class="sd">        name (str): The name of the user.</span>
+<span class="sd">        created_at (int): The timestamp when the user was created.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">created_at</span><span class="p">:</span> <span class="nb">int</span></div>
+
+
+
+<div class="viewcode-block" id="Task">
+<a class="viewcode-back" href="../../index.html#karya.entities.Task">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Task</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a task associated with a plan.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (str): The unique identifier for the task.</span>
+<span class="sd">        plan_id (str): The ID of the plan to which the task belongs.</span>
+<span class="sd">        partition_key (int): The partition key for the task.</span>
+<span class="sd">        status (TaskStatus): The status of the task (e.g., Pending, Completed, Failed).</span>
+<span class="sd">        created_at (int): The timestamp when the task was created.</span>
+<span class="sd">        executed_at (Optional[int]): The timestamp when the task was executed, or `None` if not executed.</span>
+<span class="sd">        next_execution_at (Optional[int]): The timestamp for the next task execution, or `None` if not applicable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">plan_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">partition_key</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">status</span><span class="p">:</span> <span class="n">TaskStatus</span>
+    <span class="n">created_at</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">executed_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">next_execution_at</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="Hook">
+<a class="viewcode-back" href="../../index.html#karya.entities.Hook">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Hook</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a hook that triggers an action.</span>
+
+<span class="sd">    A hook defines a trigger and an action to be performed when the trigger condition is met.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        trigger (Trigger): The event or condition that triggers the hook.</span>
+<span class="sd">        action (AbstractAction): The action to be performed when the hook is triggered.</span>
+<span class="sd">        max_retry (int): The maximum number of retries for the hook action in case of failure (default is 3).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">trigger</span><span class="p">:</span> <span class="n">Trigger</span>
+    <span class="n">action</span><span class="p">:</span> <span class="n">AbstractAction</span>
+    <span class="n">max_retry</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span></div>
+
+
+
+<div class="viewcode-block" id="Plan">
+<a class="viewcode-back" href="../../index.html#karya.entities.Plan">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Plan</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a plan for a user.</span>
+
+<span class="sd">    A plan contains metadata, actions, hooks, and other details related to a user&#39;s scheduled activities.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (str): The unique identifier for the plan.</span>
+<span class="sd">        user_id (str): The ID of the user who owns the plan.</span>
+<span class="sd">        description (str): A description of the plan.</span>
+<span class="sd">        period_time (str): The time period for which the plan is valid.</span>
+<span class="sd">        type (AbstractPlanType): The type of the plan (e.g., Recurring, OneTime).</span>
+<span class="sd">        status (PlanStatus): The status of the plan (e.g., Active, Completed, Failed).</span>
+<span class="sd">        max_failure_retry (int): The maximum number of retries allowed in case of failure.</span>
+<span class="sd">        action (AbstractAction): The action associated with the plan.</span>
+<span class="sd">        hook (List[Hook]): A list of hooks associated with the plan.</span>
+<span class="sd">        parent_plan_id (Optional[str]): The ID of the parent plan if this is a sub-plan, or `None` if not applicable.</span>
+<span class="sd">        created_at (int): The timestamp when the plan was created.</span>
+<span class="sd">        updated_at (int): The timestamp when the plan was last updated.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">period_time</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">AbstractPlanType</span>
+    <span class="n">status</span><span class="p">:</span> <span class="n">PlanStatus</span>
+    <span class="n">max_failure_retry</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">action</span><span class="p">:</span> <span class="n">AbstractAction</span>
+    <span class="n">hook</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Hook</span><span class="p">]</span>
+    <span class="n">parent_plan_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">created_at</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">updated_at</span><span class="p">:</span> <span class="nb">int</span></div>
+
+
+
+<div class="viewcode-block" id="ErrorLog">
+<a class="viewcode-back" href="../../index.html#karya.entities.ErrorLog">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">ErrorLog</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents an error log associated with a plan or task.</span>
+
+<span class="sd">    An error log records the details of an error, including the type of error, the error message, and</span>
+<span class="sd">    the associated timestamp.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        plan_id (str): The ID of the plan that generated the error.</span>
+<span class="sd">        error (str): A description of the error.</span>
+<span class="sd">        type (AbstractErrorLogType): The type of error log (either `HookErrorLog` or `ExecutorErrorLog`).</span>
+<span class="sd">        timestamp (int): The timestamp when the error occurred.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ErrorLog.AbstractErrorLogType">
+<a class="viewcode-back" href="../../index.html#karya.entities.ErrorLog.AbstractErrorLogType">[docs]</a>
+    <span class="k">class</span> <span class="nc">AbstractErrorLogType</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;An abstract base class for error log types.&quot;&quot;&quot;</span>
+
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ErrorLog.HookErrorLog">
+<a class="viewcode-back" href="../../index.html#karya.entities.ErrorLog.HookErrorLog">[docs]</a>
+    <span class="nd">@dataclass</span>
+    <span class="k">class</span> <span class="nc">HookErrorLog</span><span class="p">(</span><span class="n">AbstractErrorLogType</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Represents an error log for a hook.</span>
+
+<span class="sd">        This type of error log is used when there is an error in executing the hook action.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ErrorLog.ExecutorErrorLog">
+<a class="viewcode-back" href="../../index.html#karya.entities.ErrorLog.ExecutorErrorLog">[docs]</a>
+    <span class="nd">@dataclass</span>
+    <span class="k">class</span> <span class="nc">ExecutorErrorLog</span><span class="p">(</span><span class="n">AbstractErrorLogType</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Represents an error log for an executor.</span>
+
+<span class="sd">        This type of error log is used when there is an error related to task execution.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            task_id (str): The ID of the task that encountered the error.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">task_id</span><span class="p">:</span> <span class="nb">str</span></div>
+
+
+    <span class="n">plan_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">error</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">AbstractErrorLogType</span>
+    <span class="n">timestamp</span><span class="p">:</span> <span class="nb">int</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Saumya Bhatt.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

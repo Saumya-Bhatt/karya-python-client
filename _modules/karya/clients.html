@@ -1,23 +1,23 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../../../">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>karya.clients.KaryaRestClient &mdash; Karya 0.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+  <title>karya.clients &mdash; Karya 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
-      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=01f34227"></script>
-      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,11 +28,11 @@
 
           
           
-          <a href="../../../index.html" class="icon icon-home">
+          <a href="../../index.html" class="icon icon-home">
             Karya
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -47,16 +47,16 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">Karya</a>
+          <a href="../../index.html">Karya</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">karya.clients.KaryaRestClient</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">karya.clients</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -65,53 +65,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for karya.clients.KaryaRestClient</h1><div class="highlight"><pre>
+  <h1>Source code for karya.clients</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">httpx</span>
 <span class="kn">import</span> <span class="nn">dataclasses</span>
-<span class="kn">from</span> <span class="nn">karya.commons.client</span> <span class="kn">import</span> <span class="n">Client</span>
-<span class="kn">from</span> <span class="nn">karya.commons.config</span> <span class="kn">import</span> <span class="n">ClientConfig</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.models.User</span> <span class="kn">import</span> <span class="n">User</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.models.Plan</span> <span class="kn">import</span> <span class="n">Plan</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.requests</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">karya.clients.config</span> <span class="kn">import</span> <span class="n">ClientConfig</span>
+<span class="kn">from</span> <span class="nn">karya.entities</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Plan</span>
+<span class="kn">from</span> <span class="nn">karya.clients.requests</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">CreateUserRequest</span><span class="p">,</span>
     <span class="n">SubmitPlanRequest</span><span class="p">,</span>
     <span class="n">UpdatePlanRequest</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">karya.commons.entities.response</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">karya.clients.responses</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">GetPlanResponse</span><span class="p">,</span>
     <span class="n">GetSummaryResponse</span><span class="p">,</span>
 <span class="p">)</span>
 
 
 <div class="viewcode-block" id="KaryaRestClient">
-<a class="viewcode-back" href="../../../index.html#karya.clients.KaryaRestClient.KaryaRestClient">[docs]</a>
-<span class="k">class</span> <span class="nc">KaryaRestClient</span><span class="p">(</span><span class="n">Client</span><span class="p">):</span>
+<a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient">[docs]</a>
+<span class="k">class</span> <span class="nc">KaryaRestClient</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A client for interacting with the Karya API over REST.</span>
 
 <span class="sd">    This client provides methods to manage users and plans, such as creating a user,</span>
 <span class="sd">    submitting a plan, fetching plans, updating plans, and getting summaries of plans.</span>
-
-<span class="sd">    Methods:</span>
-<span class="sd">        create_user(request: CreateUserRequest) -&gt; User:</span>
-<span class="sd">            Creates a new user.</span>
-<span class="sd">        submit_plan(request: SubmitPlanRequest) -&gt; Plan:</span>
-<span class="sd">            Submits a new plan.</span>
-<span class="sd">        get_plan(plan_id: str) -&gt; GetPlanResponse:</span>
-<span class="sd">            Retrieves details of a specific plan.</span>
-<span class="sd">        update_plan(request: UpdatePlanRequest) -&gt; Plan:</span>
-<span class="sd">            Updates an existing plan.</span>
-<span class="sd">        cancel_plan(plan_id: str) -&gt; Plan:</span>
-<span class="sd">            Cancels a specified plan.</span>
-<span class="sd">        get_summary(plan_id: str) -&gt; GetSummaryResponse:</span>
-<span class="sd">            Retrieves the summary of a specific plan.</span>
-<span class="sd">        close() -&gt; None:</span>
-<span class="sd">            Closes the HTTP client connection.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">api_version</span> <span class="o">=</span> <span class="s2">&quot;v1&quot;</span>
-    <span class="n">plans_endpoint</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">api_version</span><span class="si">}</span><span class="s2">/plan&quot;</span>
-    <span class="n">users_endpoint</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">api_version</span><span class="si">}</span><span class="s2">/user&quot;</span>
+    <span class="n">_plans_endpoint</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">api_version</span><span class="si">}</span><span class="s2">/plan&quot;</span>
+    <span class="n">_users_endpoint</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">api_version</span><span class="si">}</span><span class="s2">/user&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ClientConfig</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -127,7 +109,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get_base_url</span><span class="p">()</span>
 
 <div class="viewcode-block" id="KaryaRestClient.create_user">
-<a class="viewcode-back" href="../../../index.html#karya.clients.KaryaRestClient.KaryaRestClient.create_user">[docs]</a>
+<a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient.create_user">[docs]</a>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">CreateUserRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a new user by sending a POST request to the Karya API.</span>
@@ -141,14 +123,14 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            httpx.HTTPStatusError: If the request fails with a non-2xx status code.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">users_endpoint</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_users_endpoint</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">asdict</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="KaryaRestClient.submit_plan">
-<a class="viewcode-back" href="../../../index.html#karya.clients.KaryaRestClient.KaryaRestClient.submit_plan">[docs]</a>
+<a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient.submit_plan">[docs]</a>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">submit_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">SubmitPlanRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Plan</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Submits a new plan to the Karya API.</span>
@@ -162,14 +144,14 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            httpx.HTTPStatusError: If the request fails with a non-2xx status code.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">plans_endpoint</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_plans_endpoint</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">asdict</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Plan</span><span class="p">(</span><span class="o">**</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="KaryaRestClient.get_plan">
-<a class="viewcode-back" href="../../../index.html#karya.clients.KaryaRestClient.KaryaRestClient.get_plan">[docs]</a>
+<a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient.get_plan">[docs]</a>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">get_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plan_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GetPlanResponse</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the details of a specific plan by ID.</span>
@@ -183,14 +165,14 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            httpx.HTTPStatusError: If the request fails with a non-2xx status code.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">plans_endpoint</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">plan_id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_plans_endpoint</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">plan_id</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">GetPlanResponse</span><span class="p">(</span><span class="o">**</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="KaryaRestClient.update_plan">
-<a class="viewcode-back" href="../../../index.html#karya.clients.KaryaRestClient.KaryaRestClient.update_plan">[docs]</a>
+<a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient.update_plan">[docs]</a>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">update_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">UpdatePlanRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Plan</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates an existing plan with new details.</span>
@@ -204,14 +186,14 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            httpx.HTTPStatusError: If the request fails with a non-2xx status code.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">plans_endpoint</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_plans_endpoint</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">asdict</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Plan</span><span class="p">(</span><span class="o">**</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="KaryaRestClient.cancel_plan">
-<a class="viewcode-back" href="../../../index.html#karya.clients.KaryaRestClient.KaryaRestClient.cancel_plan">[docs]</a>
+<a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient.cancel_plan">[docs]</a>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">cancel_plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plan_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Plan</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Cancels a specified plan by ID.</span>
@@ -225,14 +207,14 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            httpx.HTTPStatusError: If the request fails with a non-2xx status code.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">plans_endpoint</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">plan_id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_plans_endpoint</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">plan_id</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Plan</span><span class="p">(</span><span class="o">**</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="KaryaRestClient.get_summary">
-<a class="viewcode-back" href="../../../index.html#karya.clients.KaryaRestClient.KaryaRestClient.get_summary">[docs]</a>
+<a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient.get_summary">[docs]</a>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">get_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plan_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GetSummaryResponse</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves the summary for a specific plan by ID.</span>
@@ -246,14 +228,14 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            httpx.HTTPStatusError: If the request fails with a non-2xx status code.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">plans_endpoint</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">plan_id</span><span class="si">}</span><span class="s2">/summary&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_plans_endpoint</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">plan_id</span><span class="si">}</span><span class="s2">/summary&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">GetSummaryResponse</span><span class="p">(</span><span class="o">**</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="KaryaRestClient.close">
-<a class="viewcode-back" href="../../../index.html#karya.clients.KaryaRestClient.KaryaRestClient.close">[docs]</a>
+<a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient.close">[docs]</a>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Closes the HTTP client connection.</span>
