@@ -5,9 +5,9 @@ on:
     branches:
       - main
       - pypi_publish
-    paths:
-      - "karya/**"
-      - pyproject.toml
+    # paths:
+    #   - "karya/**"
+    #   - pyproject.toml
 
 jobs:
   check_version:
