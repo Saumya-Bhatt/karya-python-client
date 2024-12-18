@@ -28,8 +28,8 @@ Do refer to the [Client API Documentation](https://saumya-bhatt.github.io/karya-
 1. Create a config object:
 
     ```python
-    from karya.commons.config import ClientConfig
-    from karya.commons.entities.enums import Portocol
+    from karya.clients.config import ClientConfig
+    from karya.entities.enums import Protocol
 
     ## point this to where the Karya server is running
     config = ClientConfig(
@@ -44,7 +44,7 @@ Do refer to the [Client API Documentation](https://saumya-bhatt.github.io/karya-
 2. Create a client object:
 
     ```python
-    from karya.clients.KaryaRestClient import KaryaRestClient
+    from karya.clients import KaryaRestClient
 
     client = KaryaRestClient(config)
     ```
@@ -52,7 +52,7 @@ Do refer to the [Client API Documentation](https://saumya-bhatt.github.io/karya-
 3. Creat a user. Only a user configured in the Karya server can be used to create a client object.
 
     ```python
-    from karya.commons.entities.requests import CreateUserRequest
+    from karya.clients.requests import CreateUserRequest
 
     create_user_request = CreateUserRequest(name="python-client")
     user = await client.create_user(create_user_request)
@@ -61,8 +61,7 @@ Do refer to the [Client API Documentation](https://saumya-bhatt.github.io/karya-
 4. Specify the action that you would want to trigger once the task is scheduled.
 
     ```python
-    from karya.commons.entities.models.Action import RestApiRequest
-    from karya.commons.entities.models.HttpBody import JsonBody
+    from karya.entities.actions import RestApiRequest
 
     ## For example, we shall be making a POST request to a local server
     action = RestApiRequest(
@@ -70,7 +69,7 @@ Do refer to the [Client API Documentation](https://saumya-bhatt.github.io/karya-
         base_url="localhost",  # Base URL for the REST API
         method=Method.POST,  # HTTP method for the request (POST)
         headers={"content-type": "application/json"},  # Set the content type to JSON
-        body=JsonBody.from_dict(
+        body=RestApiRequest.JsonBody.from_dict(
             {"message": "Hello from python client"}
         ),  # JSON body to send in the request
         timeout=2000,  # Timeout for the request (in milliseconds)
@@ -82,8 +81,8 @@ Do refer to the [Client API Documentation](https://saumya-bhatt.github.io/karya-
     > `period_time` has to be in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) format.
 
     ```python
-    from karya.commons.entities.requests import SubmitPlanRequest
-    from karya.commons.entities.models.Plan import Recurring
+    from karya.clients.requests SubmitPlanRequest
+    from karya.entities.plan_types import Recurring
 
     # For example, we shall be submitting a recurring plan
     plan_request = SubmitPlanRequest(
@@ -122,7 +121,7 @@ Make a REST API request to a specified URL with the given parameters.
         base_url="localhost",  # Base URL for the REST API
         method=Method.POST,  # HTTP method for the request (POST)
         headers={"content-type": "application/json"},  # Set the content type to JSON
-        body=JsonBody.from_dict(
+        body=RestApiRequest.JsonBody.from_dict(
             {"message": "Hello from python client"}
         ),  # JSON body to send in the request
         timeout=2000,  # Timeout for the request (in milliseconds)
