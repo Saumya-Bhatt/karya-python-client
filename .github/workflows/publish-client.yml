@@ -44,6 +44,7 @@ jobs:
         
         if [ -z "$LATEST_RELEASE" ]; then
           echo "No previous release found. Proceeding with release."
+          echo "::set-output name=should_publish::true"
           exit 0
         fi
 
@@ -54,22 +55,25 @@ jobs:
 
         if [ "$(printf '%s\n' "$LATEST_RELEASE" "$CURRENT_VERSION" | sort -V | tail -n 1)" != "$LATEST_RELEASE" ]; then
           echo "New version detected. Proceeding with release."
-          exit 0
+          echo "::set-output name=should_publish::true"
         else
           echo "No new version to release"
-          exit 1
+          echo "::set-output name=should_publish::false"
         fi
+        exit 0
 
     - name: Install project dependencies
+      if: steps.check_version.outputs.should_publish == 'true'
       run: |
         poetry install --no-root
 
     - name: Build the package
+      if: steps.check_version.outputs.should_publish == 'true'
       run: |
         poetry build
 
     - name: Create an publish new release
-      id: create_release
+      if: steps.check_version.outputs.should_publish == 'true'
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ steps.version.outputs.version }}
