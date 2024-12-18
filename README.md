@@ -2,8 +2,6 @@
 
 This here is the Python client to interract with [Karya - the open sourced distributed job scheduler](https://github.com/Saumya-Bhatt/karya)
 
-> Current Stable Version : **0.1.0**
-
 - [API Docs](https://saumya-bhatt.github.io/karya-python-client)
 - [How to contribute](./.github/CONTRIBUTING.md)
 
