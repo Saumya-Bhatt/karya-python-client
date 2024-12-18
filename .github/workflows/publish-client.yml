@@ -5,9 +5,9 @@ on:
     branches:
       - main
       - pypi_publish
-    # paths:
-    #   - "karya/**"
-    #   - pyproject.toml
+    paths:
+      - "karya/**"
+      - pyproject.toml
 
 jobs:
   check_version:
@@ -28,7 +28,6 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install poetry
           pip install toml
 
       - name: Fetch version
