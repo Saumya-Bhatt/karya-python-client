@@ -5,9 +5,9 @@ on:
     branches:
       - main
       - client_publish_update
-    paths:
-      - 'karya/**'
-      - pyproject.toml
+    # paths:
+    #   - 'karya/**'
+    #   - pyproject.toml
 
 jobs:
 
