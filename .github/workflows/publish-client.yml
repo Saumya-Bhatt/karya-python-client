@@ -29,6 +29,35 @@ jobs:
         pip install poetry
         pip install toml
 
+    - name: Check if fetch version is greater than github release version
+      id: check_version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Fetch the latest release tag from GitHub
+        LATEST_RELEASE=$(gh release list --limit 1 --json tagName --jq '.[0].tagName')
+        
+        # If no previous release exists, continue
+        if [ -z "$LATEST_RELEASE" ]; then
+          echo "No previous release found. Proceeding with release."
+          exit 0
+        fi
+
+        # Compare versions (removing 'v' prefix)
+        CURRENT_VERSION="${{ steps.version.outputs.version }}"
+        
+        echo "Current version: $CURRENT_VERSION"
+        echo "Latest release: $LATEST_RELEASE"
+
+        # Use sort to compare version strings
+        if [ "$(printf '%s\n' "$LATEST_RELEASE" "$CURRENT_VERSION" | sort -V | tail -n 1)" != "$LATEST_RELEASE" ]; then
+          echo "New version detected. Proceeding with release."
+          exit 0
+        else
+          echo "No new version to release"
+          exit 1
+        fi
+
     - name: Install project dependencies
       run: |
         poetry install --no-root
@@ -42,16 +71,6 @@ jobs:
       run: |
         VERSION=$(python -c "import toml; print(toml.load('pyproject.toml')['tool']['poetry']['version'])")
         echo "::set-output name=version::v$VERSION"
-
-    - name: Check if fetch version is greater than github release version
-      id: check_version
-      run: |
-        echo "Current version: ${{ steps.version.outputs.version }}"
-        echo "Latest release: ${{ github.event.release.tag_name }}"
-        if [ "${{ steps.version.outputs.version }}" = "${{ github.event.release.tag_name }}" ]; then
-          echo "No new version to release"
-          exit 1
-        fi
 
     - name: Create an publish new release
       id: create_release
