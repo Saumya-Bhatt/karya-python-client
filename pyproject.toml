@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "karya-client"
 version = "0.1.0"
-description = ""
+description = "Python client to interract with Karya; the open sourced distributed job scheduler"
 authors = ["Saumya Bhatt <108668549+SaumyaBhatt106@users.noreply.github.com>"]
 readme = "README.md"
 homepage = "https://saumya-bhatt.github.io/karya-python-client/"
