@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - pypi_publish
     paths:
       - "karya/**"
       - pyproject.toml
