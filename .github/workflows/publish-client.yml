@@ -10,9 +10,11 @@ on:
     #   - pyproject.toml
 
 jobs:
-
-  publish-release-to-github:
+  check_version:
     runs-on: ubuntu-latest
+    outputs:
+      should_publish: ${{ steps.check_version.outputs.should_publish }}
+      version: ${{ steps.version.outputs.version }}
 
     steps:
     - name: Checkout code
@@ -62,21 +64,37 @@ jobs:
         fi
         exit 0
 
+  publish_to_github:
+    needs: check_version
+    if: needs.check_version.outputs.should_publish == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
+
     - name: Install project dependencies
-      if: steps.check_version.outputs.should_publish == 'true'
       run: |
         poetry install --no-root
 
     - name: Build the package
-      if: steps.check_version.outputs.should_publish == 'true'
       run: |
         poetry build
 
-    - name: Create an publish new release
-      if: steps.check_version.outputs.should_publish == 'true'
+    - name: Create and publish GitHub release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ steps.version.outputs.version }}
+        tag_name: ${{ needs.check_version.outputs.version }}
         files: |
           dist/*
       env:
