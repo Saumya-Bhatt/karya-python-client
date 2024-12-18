@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from karya.commons.entities.enums import Protocol
+from karya.entities.enums import Protocol
 
 
 @dataclass
@@ -15,12 +15,6 @@ class ClientConfig:
         protocol (Protocol): The communication protocol (e.g., HTTP or HTTPS).
         host (str): The host or domain name of the API server.
         port (int): The port number used to access the API.
-
-    Methods:
-        get_base_url() -> str:
-            Generates and returns the base URL for the API based on the configuration.
-        dev() -> ClientConfig:
-            Returns a default configuration intended for local development.
     """
 
     protocol: Protocol

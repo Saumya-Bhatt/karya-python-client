@@ -4,15 +4,16 @@ import os
 # Add the root directory of the project to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from karya.commons.config import ClientConfig
-from karya.commons.entities.requests import (
+from karya.clients.config import ClientConfig
+from karya.clients import KaryaRestClient
+from karya.clients.requests import (
     CreateUserRequest,
     SubmitPlanRequest,
 )
-from karya.commons.entities.models.Hook import Hook, Trigger
-from karya.commons.entities.models.Action import RestApiRequest
-from karya.commons.entities.models.Plan import OneTime
-from karya.clients.KaryaRestClient import KaryaRestClient
+from karya.entities import Hook
+from karya.entities.actions import RestApiRequest
+from karya.entities.plan_types import OneTime
+from karya.entities.enums import Trigger
 
 
 async def main():
@@ -35,7 +36,6 @@ async def main():
     # Step 1: Create a new user
     create_user_request = CreateUserRequest(name="python-client")
     user = await client.create_user(create_user_request)
-    print(user)  # Print the created user object
 
     # Step 2: Define a failure hook
     failure_hook = Hook(

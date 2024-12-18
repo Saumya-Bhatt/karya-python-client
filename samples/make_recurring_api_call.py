@@ -4,16 +4,15 @@ import os
 # Add the root directory of the project to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from karya.commons.config import ClientConfig
-from karya.commons.entities.requests import (
+from karya.clients.config import ClientConfig
+from karya.clients import KaryaRestClient
+from karya.clients.requests import (
     CreateUserRequest,
     SubmitPlanRequest,
 )
-from karya.commons.entities.models.Action import RestApiRequest
-from karya.commons.entities.models.HttpBody import JsonBody
-from karya.commons.entities.models.Plan import Recurring
-from karya.clients.KaryaRestClient import KaryaRestClient
-from karya.commons.entities.enums import Protocol, Method
+from karya.entities.actions import RestApiRequest
+from karya.entities.plan_types import Recurring
+from karya.entities.enums import Protocol, Method
 
 
 async def main():
@@ -47,7 +46,7 @@ async def main():
         base_url="eox7wbcodh9parh.m.pipedream.net",  # Base URL for the REST API
         method=Method.POST,  # HTTP method for the request (POST)
         headers={"content-type": "application/json"},  # Set the content type to JSON
-        body=JsonBody.from_dict(
+        body=RestApiRequest.JsonBody.from_dict(
             {"message": "Hello from python client"}
         ),  # JSON body to send in the request
         timeout=2000,  # Timeout for the request (in milliseconds)

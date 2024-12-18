@@ -1,6 +1,42 @@
 from enum import Enum
 
 
+# Enum class to represent the different statuses of a plan.
+class PlanStatus(Enum):
+    """
+    Enum that defines the possible states a plan can be in during its lifecycle.
+
+    - `CREATED`: The plan has been created but not yet started.
+    - `RUNNING`: The plan is currently in execution.
+    - `COMPLETED`: The plan has finished execution.
+    - `CANCELLED`: The plan was cancelled before completion.
+    """
+
+    CREATED = "CREATED"
+    RUNNING = "RUNNING"
+    COMPLETED = "COMPLETED"
+    CANCELLED = "CANCELLED"
+
+
+# Enum class to represent the different statuses of a task within a plan.
+class TaskStatus(Enum):
+    """
+    Enum that defines the possible states of a task during its execution within a plan.
+
+    - `CREATED`: The task has been created but not yet processed.
+    - `PROCESSING`: The task is currently being processed.
+    - `SUCCESS`: The task was processed successfully.
+    - `FAILURE`: The task encountered an error and failed.
+    - `CANCELLED`: The task was cancelled before completion.
+    """
+
+    CREATED = "CREATED"
+    PROCESSING = "PROCESSING"
+    SUCCESS = "SUCCESS"
+    FAILURE = "FAILURE"
+    CANCELLED = "CANCELLED"
+
+
 # Enum class to represent different triggers for actions in a workflow.
 class Trigger(str, Enum):
     """
@@ -42,39 +78,3 @@ class Method(str, Enum):
     POST = "POST"
     PATCH = "PATCH"
     DELETE = "DELETE"
-
-
-# Enum class to represent the different statuses of a plan.
-class PlanStatus(Enum):
-    """
-    Enum that defines the possible states a plan can be in during its lifecycle.
-
-    - `CREATED`: The plan has been created but not yet started.
-    - `RUNNING`: The plan is currently in execution.
-    - `COMPLETED`: The plan has finished execution.
-    - `CANCELLED`: The plan was cancelled before completion.
-    """
-
-    CREATED = "CREATED"
-    RUNNING = "RUNNING"
-    COMPLETED = "COMPLETED"
-    CANCELLED = "CANCELLED"
-
-
-# Enum class to represent the different statuses of a task within a plan.
-class TaskStatus(Enum):
-    """
-    Enum that defines the possible states of a task during its execution within a plan.
-
-    - `CREATED`: The task has been created but not yet processed.
-    - `PROCESSING`: The task is currently being processed.
-    - `SUCCESS`: The task was processed successfully.
-    - `FAILURE`: The task encountered an error and failed.
-    - `CANCELLED`: The task was cancelled before completion.
-    """
-
-    CREATED = "CREATED"
-    PROCESSING = "PROCESSING"
-    SUCCESS = "SUCCESS"
-    FAILURE = "FAILURE"
-    CANCELLED = "CANCELLED"
