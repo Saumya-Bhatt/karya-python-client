@@ -13,10 +13,10 @@ class Recurring(AbstractPlanType):
     plan should end.
 
     Attributes:
-        end_at (Optional[str]): The optional end date for the recurring plan (can be `None`).
+        end_at (Optional[int]): The optional end date for the recurring plan (can be `None` if want to run plan indefinitely). Specify the end date in Unix timestamp format in epoch milliseconds.
     """
 
-    end_at: Optional[str]
+    end_at: Optional[int]
     type: str = "karya.core.entities.PlanType.Recurring"
 
 
