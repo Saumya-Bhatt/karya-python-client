@@ -109,6 +109,34 @@ Do refer to the [Client API Documentation](https://saumya-bhatt.github.io/karya-
 
 ---
 
+## Plan Type
+
+Karya supports the following plan types:
+
+### One Time
+
+This can be used to trigger a delayed action.
+
+```python
+from karya.entities.plan_types import OneTime
+
+val plan_type = OneTime()
+```
+
+### Recurring
+
+This can be used to trigger an action periodically.
+
+> **NOTE:** If the `endAt` field is not specified, the plan will run indefinitely.
+
+```python
+from karya.entities.plan_types import Recurring
+
+plan_type = Recurring(end_at=1734694042) # define time in epoch-milli second
+```
+
+---
+
 ## Actions
 
 Actions define what Karya should do once it has to execute the plan. The client supports the following actions:
