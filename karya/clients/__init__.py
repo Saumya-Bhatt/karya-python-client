@@ -56,6 +56,25 @@ class KaryaRestClient:
         response.raise_for_status()
         return User(**response.json())
 
+    async def get_user(self, username: str) -> User:
+        """
+        Retrieves the details of a specific user by username.
+
+        Args:
+            username (str): The username of the user to retrieve.
+
+        Returns:
+            User: A User object containing the details of the requested user.
+
+        Raises:
+            httpx.HTTPStatusError: If the request fails with a non-2xx status code.
+        """
+        url = f"{self.base_url}/{self._users_endpoint}"
+        params = {"username": username}
+        response = await self.client.get(url=url, params=params)
+        response.raise_for_status()
+        return User(**response.json())
+
     async def submit_plan(self, request: SubmitPlanRequest) -> Plan:
         """
         Submits a new plan to the Karya API.
@@ -145,6 +164,25 @@ class KaryaRestClient:
         response = await self.client.get(url)
         response.raise_for_status()
         return GetSummaryResponse(**response.json())
+
+    async def list_plans(self, user_id: str) -> list[Plan]:
+        """
+        Retrieves a list of plans for a specific user by username.
+
+        Args:
+            username (str): The username of the user for which to retrieve plans.
+
+        Returns:
+            list[Plan]: A list of Plan objects containing the details of the user's plans.
+
+        Raises:
+            httpx.HTTPStatusError: If the request fails with a non-2xx status code.
+        """
+        url = f"{self.base_url}/{self._plans_endpoint}"
+        params = {"user_id": user_id}
+        response = await self.client.get(url=url, params=params)
+        response.raise_for_status()
+        return [Plan(**plan) for plan in response.json()]
 
     async def close(self) -> None:
         """
