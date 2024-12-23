@@ -79,6 +79,8 @@
 <li><a class="reference internal" href="#karya.clients.KaryaRestClient.create_user"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.create_user()</span></code></a></li>
 <li><a class="reference internal" href="#karya.clients.KaryaRestClient.get_plan"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.get_plan()</span></code></a></li>
 <li><a class="reference internal" href="#karya.clients.KaryaRestClient.get_summary"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.get_summary()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.get_user"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.get_user()</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.KaryaRestClient.list_plans"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.list_plans()</span></code></a></li>
 <li><a class="reference internal" href="#karya.clients.KaryaRestClient.submit_plan"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.submit_plan()</span></code></a></li>
 <li><a class="reference internal" href="#karya.clients.KaryaRestClient.update_plan"><code class="docutils literal notranslate"><span class="pre">KaryaRestClient.update_plan()</span></code></a></li>
 </ul>
@@ -602,6 +604,46 @@ resources are cleaned up properly.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#karya.clients.responses.GetSummaryResponse" title="karya.clients.responses.GetSummaryResponse">GetSummaryResponse</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.get_user">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#karya.entities.User" title="karya.entities.User"><span class="pre">User</span></a></span></span><a class="reference internal" href="_modules/karya/clients.html#KaryaRestClient.get_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.get_user" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the details of a specific user by username.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>username</strong> (<em>str</em>) – The username of the user to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A User object containing the details of the requested user.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#karya.entities.User" title="karya.entities.User">User</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="karya.clients.KaryaRestClient.list_plans">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_plans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.entities.Plan" title="karya.entities.Plan"><span class="pre">Plan</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/karya/clients.html#KaryaRestClient.list_plans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.list_plans" title="Link to this definition"></a></dt>
+<dd><p>Retrieves a list of plans for a specific user by username.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>username</strong> (<em>str</em>) – The username of the user for which to retrieve plans.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of Plan objects containing the details of the user’s plans.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#karya.entities.Plan" title="karya.entities.Plan">Plan</a>]</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>httpx.HTTPStatusError</strong> – If the request fails with a non-2xx status code.</p>
