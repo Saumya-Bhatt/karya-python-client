@@ -175,7 +175,7 @@ class KaryaRestClient:
             page (int): The page number to retrieve (default is 0).
 
         Returns:
-            list[Plan]: A list of Plan objects containing the details of the user's plans.
+            ListPlanResponse: A resopnse object containing the list of plans.
 
         Raises:
             httpx.HTTPStatusError: If the request fails with a non-2xx status code.
@@ -184,7 +184,7 @@ class KaryaRestClient:
         params = {"user_id": user_id, "page": page}
         response = await self.client.get(url=url, params=params)
         response.raise_for_status()
-        return [Plan(**plan) for plan in response.json()]
+        return ListPlanResponse(**response.json())
 
     async def close(self) -> None:
         """
