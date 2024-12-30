@@ -165,12 +165,13 @@ class KaryaRestClient:
         response.raise_for_status()
         return GetSummaryResponse(**response.json())
 
-    async def list_plans(self, user_id: str) -> list[Plan]:
+    async def list_plans(self, user_id: str, page: int) -> list[Plan]:
         """
         Retrieves a list of plans for a specific user by username.
 
         Args:
             username (str): The username of the user for which to retrieve plans.
+            page (int): The page number to retrieve (default is 0).
 
         Returns:
             list[Plan]: A list of Plan objects containing the details of the user's plans.
@@ -179,7 +180,7 @@ class KaryaRestClient:
             httpx.HTTPStatusError: If the request fails with a non-2xx status code.
         """
         url = f"{self.base_url}/{self._plans_endpoint}"
-        params = {"user_id": user_id}
+        params = {"user_id": user_id, "page": page}
         response = await self.client.get(url=url, params=params)
         response.raise_for_status()
         return [Plan(**plan) for plan in response.json()]

@@ -46,13 +46,13 @@ class UpdatePlanRequest:
     Represents a request to update an existing plan.
 
     Attributes:
-        planId (str): The ID of the plan to be updated.
-        periodTime (Optional[str]): The new time period for the plan (optional).
-        maxFailureRetry (Optional[int]): The new maximum number of retries for the plan (optional).
+        plan_id (str): The ID of the plan to be updated.
+        period_time (Optional[str]): The new time period for the plan (optional).
+        max_failure_retry (Optional[int]): The new maximum number of retries for the plan (optional).
         hooks (Optional[List[Hook]]): A new list of hooks to be executed with the plan (optional).
     """
 
-    planId: str
-    periodTime: Optional[str]
-    maxFailureRetry: Optional[int]
+    plan_id: str
+    period_time: Optional[str]
+    max_failure_retry: Optional[int]
     hooks: Optional[List[Hook]]
