@@ -106,6 +106,25 @@
     <span class="n">tasks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Task</span><span class="p">]</span>
     <span class="n">error_logs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ErrorLog</span><span class="p">]</span></div>
 
+
+
+<div class="viewcode-block" id="ListPlanResponse">
+<a class="viewcode-back" href="../../../index.html#karya.clients.responses.ListPlanResponse">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">ListPlanResponse</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents the response for listing plans.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        plans (List[Plan]): A list of plans.</span>
+<span class="sd">        total (int): The total number of plans.</span>
+<span class="sd">        offset (int): The offset used for pagination.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">plans</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Plan</span><span class="p">]</span>
+    <span class="n">total</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span></div>
+
 </pre></div>
 
            </div>

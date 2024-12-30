@@ -78,6 +78,7 @@
 <span class="kn">from</span> <span class="nn">karya.clients.responses</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">GetPlanResponse</span><span class="p">,</span>
     <span class="n">GetSummaryResponse</span><span class="p">,</span>
+    <span class="n">ListPlanResponse</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -258,7 +259,7 @@
 
 <div class="viewcode-block" id="KaryaRestClient.list_plans">
 <a class="viewcode-back" href="../../index.html#karya.clients.KaryaRestClient.list_plans">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">list_plans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Plan</span><span class="p">]:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">list_plans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListPlanResponse</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retrieves a list of plans for a specific user by username.</span>
 
