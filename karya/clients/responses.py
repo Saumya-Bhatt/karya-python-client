@@ -31,3 +31,19 @@ class GetSummaryResponse:
     plan: Plan
     tasks: List[Task]
     error_logs: List[ErrorLog]
+
+
+@dataclass
+class ListPlanResponse:
+    """
+    Represents the response for listing plans.
+
+    Attributes:
+        plans (List[Plan]): A list of plans.
+        total (int): The total number of plans.
+        offset (int): The offset used for pagination.
+    """
+
+    plans: List[Plan]
+    total: int
+    offset: int

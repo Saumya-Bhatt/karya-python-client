@@ -10,6 +10,7 @@ from karya.clients.requests import (
 from karya.clients.responses import (
     GetPlanResponse,
     GetSummaryResponse,
+    ListPlanResponse,
 )
 
 
@@ -165,7 +166,7 @@ class KaryaRestClient:
         response.raise_for_status()
         return GetSummaryResponse(**response.json())
 
-    async def list_plans(self, user_id: str, page: int) -> list[Plan]:
+    async def list_plans(self, user_id: str, page: int) -> ListPlanResponse:
         """
         Retrieves a list of plans for a specific user by username.
 
