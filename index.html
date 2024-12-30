@@ -123,14 +123,14 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#karya.clients.requests.UpdatePlanRequest"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest</span></code></a><ul>
-<li><a class="reference internal" href="#karya.clients.requests.UpdatePlanRequest.planId"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.planId</span></code></a></li>
-<li><a class="reference internal" href="#karya.clients.requests.UpdatePlanRequest.periodTime"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.periodTime</span></code></a></li>
-<li><a class="reference internal" href="#karya.clients.requests.UpdatePlanRequest.maxFailureRetry"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.maxFailureRetry</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.requests.UpdatePlanRequest.plan_id"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.plan_id</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.requests.UpdatePlanRequest.period_time"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.period_time</span></code></a></li>
+<li><a class="reference internal" href="#karya.clients.requests.UpdatePlanRequest.max_failure_retry"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.max_failure_retry</span></code></a></li>
 <li><a class="reference internal" href="#karya.clients.requests.UpdatePlanRequest.hooks"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.hooks</span></code></a></li>
 <li><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.hooks</span></code></a></li>
-<li><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.maxFailureRetry</span></code></a></li>
-<li><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.periodTime</span></code></a></li>
-<li><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.planId</span></code></a></li>
+<li><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.max_failure_retry</span></code></a></li>
+<li><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.period_time</span></code></a></li>
+<li><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">UpdatePlanRequest.plan_id</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -633,11 +633,14 @@ resources are cleaned up properly.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="karya.clients.KaryaRestClient.list_plans">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_plans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.entities.Plan" title="karya.entities.Plan"><span class="pre">Plan</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/karya/clients.html#KaryaRestClient.list_plans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.list_plans" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_plans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.entities.Plan" title="karya.entities.Plan"><span class="pre">Plan</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/karya/clients.html#KaryaRestClient.list_plans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.KaryaRestClient.list_plans" title="Link to this definition"></a></dt>
 <dd><p>Retrieves a list of plans for a specific user by username.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>username</strong> (<em>str</em>) – The username of the user for which to retrieve plans.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<em>str</em>) – The username of the user for which to retrieve plans.</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – The page number to retrieve (default is 0).</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of Plan objects containing the details of the user’s plans.</p>
@@ -946,12 +949,12 @@ port = 8080</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="karya.clients.requests.UpdatePlanRequest">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">karya.clients.requests.</span></span><span class="sig-name descname"><span class="pre">UpdatePlanRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">planId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodTime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxFailureRetry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hooks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.entities.Hook" title="karya.entities.Hook"><span class="pre">Hook</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/karya/clients/requests.html#UpdatePlanRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.requests.UpdatePlanRequest" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">karya.clients.requests.</span></span><span class="sig-name descname"><span class="pre">UpdatePlanRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_failure_retry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hooks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#karya.entities.Hook" title="karya.entities.Hook"><span class="pre">Hook</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/karya/clients/requests.html#UpdatePlanRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#karya.clients.requests.UpdatePlanRequest" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Represents a request to update an existing plan.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="karya.clients.requests.UpdatePlanRequest.planId">
-<span class="sig-name descname"><span class="pre">planId</span></span><a class="headerlink" href="#karya.clients.requests.UpdatePlanRequest.planId" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="karya.clients.requests.UpdatePlanRequest.plan_id">
+<span class="sig-name descname"><span class="pre">plan_id</span></span><a class="headerlink" href="#karya.clients.requests.UpdatePlanRequest.plan_id" title="Link to this definition"></a></dt>
 <dd><p>The ID of the plan to be updated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -961,8 +964,8 @@ port = 8080</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="karya.clients.requests.UpdatePlanRequest.periodTime">
-<span class="sig-name descname"><span class="pre">periodTime</span></span><a class="headerlink" href="#karya.clients.requests.UpdatePlanRequest.periodTime" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="karya.clients.requests.UpdatePlanRequest.period_time">
+<span class="sig-name descname"><span class="pre">period_time</span></span><a class="headerlink" href="#karya.clients.requests.UpdatePlanRequest.period_time" title="Link to this definition"></a></dt>
 <dd><p>The new time period for the plan (optional).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -972,8 +975,8 @@ port = 8080</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="karya.clients.requests.UpdatePlanRequest.maxFailureRetry">
-<span class="sig-name descname"><span class="pre">maxFailureRetry</span></span><a class="headerlink" href="#karya.clients.requests.UpdatePlanRequest.maxFailureRetry" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="karya.clients.requests.UpdatePlanRequest.max_failure_retry">
+<span class="sig-name descname"><span class="pre">max_failure_retry</span></span><a class="headerlink" href="#karya.clients.requests.UpdatePlanRequest.max_failure_retry" title="Link to this definition"></a></dt>
 <dd><p>The new maximum number of retries for the plan (optional).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -1000,17 +1003,17 @@ port = 8080</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id12">
-<span class="sig-name descname"><span class="pre">maxFailureRetry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">max_failure_retry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id13">
-<span class="sig-name descname"><span class="pre">periodTime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">period_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id14">
-<span class="sig-name descname"><span class="pre">planId</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">plan_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
