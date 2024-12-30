@@ -32,6 +32,7 @@ class GetSummaryResponse:
     tasks: List[Task]
     error_logs: List[ErrorLog]
 
+
 @dataclass
 class ListPlanResponse:
     """

@@ -10,7 +10,7 @@ from karya.clients.requests import (
 from karya.clients.responses import (
     GetPlanResponse,
     GetSummaryResponse,
-    ListPlanResponse
+    ListPlanResponse,
 )
 
 
